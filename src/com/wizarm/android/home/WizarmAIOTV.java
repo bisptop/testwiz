@@ -61,6 +61,8 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -76,6 +78,8 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -171,9 +175,18 @@ public class WizarmAIOTV extends Activity {
         String command;
         command = "LD_LIBRARY_PATH=/vendor/lib:/system/lib service call activity 42 s16 com.android.systemui";
         
+        try {
+			proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "busybox killall com.android.systemui" });
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        
 		try {
 			 String[] envp = null;
-			proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "LD_LIBRARY_PATH=/vendor/lib:/system/lib" , "service call activity "+ProcID+" s16 com.android.systemui" });
+			proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "export LD_LIBRARY_PATH=/vendor/lib:/system/lib" , "service call activity "+ProcID+" s16 com.android.systemui" });
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -188,7 +201,17 @@ public class WizarmAIOTV extends Activity {
 		}
 
                 try {
+                	 OutputStreamWriter osw = null;
                         proc = Runtime.getRuntime().exec(new String[]{"su","-c","service call activity "+ ProcID +" s16 com.android.systemui"});
+                     
+                        osw = new OutputStreamWriter(proc.getOutputStream());
+                        osw.write("/system/bin/service call activity 42 s16 com.android.systemui"); 
+                        osw.flush();
+                        osw.close();
+                        
+                        
+                        
+                        
                 } catch (IOException e) {
                         // TODO Auto-generated catch block
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -201,6 +224,10 @@ public class WizarmAIOTV extends Activity {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         e.printStackTrace();
                 }
+            
+           // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            
+                       
 
 
     }
@@ -287,7 +314,7 @@ public class WizarmAIOTV extends Activity {
 
 	int mNumberOfCameras;
    	int mCurrentCamera;  // Camera ID currently chosen
-    	int mCameraCurrentlyLocked;  // Camera ID that's actually acquired
+    int mCameraCurrentlyLocked;  // Camera ID that's actually acquired
 	    // The first rear facing camera
 	int mDefaultCameraId;
 	SurfaceHolder.Callback sh_ob = null;
@@ -300,8 +327,6 @@ public class WizarmAIOTV extends Activity {
 
     	// HDMI TV View is our default wallpaper
     	
-//	getWindow().setFormat(PixelFormat.TRANSLUCENT);
-
         // Find the total number of cameras available
         mNumberOfCameras = Camera.getNumberOfCameras();
 
@@ -314,66 +339,18 @@ public class WizarmAIOTV extends Activity {
             }
         }
 
-
         Log.e(LOG_TAG, "Camera init " + mNumberOfCameras);
-
-
-
-        // Acquire the next camera and request Preview to reconfigure
-            // parameters.
-       //     mCurrentCamera = (mCameraCurrentlyLocked + 1) % mNumberOfCameras;
-		mCurrentCamera=0;
-     //       mCamera = Camera.open(mCurrentCamera);
-         //   mCameraCurrentlyLocked = mCurrentCamera;
-
         Log.e(LOG_TAG, "Camera init 0-----------------------000 FIN 1" + mCamera);
-     //       mPreview.switchCamera(mCamera);
-            // Start the preview
-          //  mCamera.startPreview();
-       
+
+	mCurrentCamera=0;
+      /* Temp probs with hdmi */
         csurface=(CSurfaceView)findViewById(R.id.surface);
         surface_holder=csurface.getHolder();
         surface_holder.addCallback(csurface);
         surface_holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-   //     this.getWindow().addContentView(csurface,mylayoutparam);
-        
-/*
-            surface_view = new SurfaceView(getApplicationContext());
-
-
-            this.getWindow().addContentView(surface_view,mylayoutparam);
-      //      surface_view.getAlpha();
-
-            if (surface_holder == null) {
-                surface_holder = surface_view.getHolder();
-            }
-
-      
-            
-            
-            sh_callback = my_callback();
-          surface_holder.addCallback(sh_callback);
-
-      //     surface_view.setZOrderOnTop(true);
-          surface_view.setZOrderMediaOverlay(true);
-*/
-
-	 //   surface_view.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-	   // surface_holder.setFormat(PixelFormat.TRANSLUCENT);
-	  //  surface_holder.setFormat(PixelFormat.OPAQUE);
-
-          // surface_view.setZOrderMediaOverlay(true);
-//surface_holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-          // surface_view.setEGLContextClientVersion(2);
-
 
         Log.e(LOG_TAG, "Camera init 0-----------------------000 FIN" + mNumberOfCameras);
     }
-
-
-
-
 
 
 
@@ -868,6 +845,8 @@ public class WizarmAIOTV extends Activity {
     	
     	if(main.getVisibility() == View.GONE);{
     		main.setVisibility(View.VISIBLE);
+		main.bringToFront();
+		main.requestLayout();
 //    		showApplications(false);
     	}
 		
@@ -970,7 +949,7 @@ public class WizarmAIOTV extends Activity {
             textView.setCompoundDrawablesWithIntrinsicBounds(null, icon, null, null);
             textView.setText(info.title);
 
-	Log.w(LOG_TAG," __FDK__ ONCREATE Overlay show activity");
+	    Log.w(LOG_TAG," __FDK__ ONCREATE Overlay show activity");
 	
             return convertView;
         }

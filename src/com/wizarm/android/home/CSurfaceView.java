@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -26,6 +27,12 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	SurfaceHolder sholder=null;
 	public Camera mCamera=null;
 	CameraInfo cameraInfo = new CameraInfo();
+
+
+	protected boolean mOpenCameraFail;
+   	protected boolean mCameraDisabled;
+
+
 	
 	public CSurfaceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -48,14 +55,22 @@ public class CSurfaceView extends SurfaceView implements Callback{
  	public void surfaceCreated(SurfaceHolder holder) {
  		// TODO Auto-generated method stub
 		sholder=holder;
-		CameraSetup();	
+
+		/*
+        	 * To reduce startup time, we start the preview in another thread.
+        	 * We make sure the preview is started at the end of onCreate.
+        	 */	
+//		drawNosignal();
+
+		    	CameraSetup();
+		CameraOpenThread cameraOpenThread = new CameraOpenThread();
+		//	cameraOpenThread.start();
  		
  	}
 
 	public int CameraSetup(){
 		
-		Log.e(LOG_TAG, "00000000000000000000000000000000000000000000000000000000");
-		Log.e(LOG_TAG, "00000000000000000000000000000000000000000000000000000000 NO of camera=" +checkNumberofCameras());
+		Log.e(LOG_TAG, "100000000000000000000000000000000000000000000000000000000 NO of camera=" +checkNumberofCameras());
 		
 		 if(checkNumberofCameras()==0) {
 				Log.e(LOG_TAG, "111111111111111111111111111111111111111111111111");
@@ -73,6 +88,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
         	       mCamera = null;
         	       drawNosignal();
 		 }
+
  	       return 1; 
 	}
 
@@ -82,8 +98,13 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		// TODO Auto-generated method stub
-	if(mCamera!=null)
-   	     mCamera.startPreview();
+		
+		CameraPreviewThread cameraPreviewThread = new CameraPreviewThread();
+		cameraPreviewThread.setdelay(100);
+		cameraPreviewThread.start();
+
+		Log.e(LOG_TAG, "SurfaceChanged camera called");
+
 		
 	}
 
@@ -100,7 +121,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 
 
 	    public void onResume() {
-	    	CameraSetup();
+	    	//CameraSetup();
 	    }
 
 
@@ -128,7 +149,63 @@ public class CSurfaceView extends SurfaceView implements Callback{
         int newHeight = Math.round(background.getHeight());
         Bitmap scaled = Bitmap.createScaledBitmap(background, newWidth, newHeight, true);    
         Log.e(LOG_TAG, "Camera drawNosignal() Finish");
+   	 }
+
+
+
+    public class CameraOpenThread extends Thread {
+        @Override
+        public void run() {
+
+		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
+		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
+		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
+		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
+		CameraSetup();	
+            }
+        }
+
+    public class CameraPreviewThread extends Thread {
+        @Override
+        public void run() {
+    		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
+    		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
+
+
+        	if(mCamera!=null){
+        		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
+        		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
+          	     mCamera.startPreview();
+        	}
+
+            }
+
+		public void setdelay(int i) {
+			// TODO Auto-generated method stub
+			
+		}
+        }
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*	
@@ -164,4 +241,3 @@ public class CSurfaceView extends SurfaceView implements Callback{
 		void onTap(MotionEvent event);
 	}
 */
-}
