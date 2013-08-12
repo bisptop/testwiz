@@ -6,6 +6,10 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.view.MotionEvent;
@@ -27,6 +31,11 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	SurfaceHolder sholder=null;
 	public Camera mCamera=null;
 	CameraInfo cameraInfo = new CameraInfo();
+	Bitmap scaled;
+	Canvas Bcanvas;
+	int newWidth ;
+	int newHeight;
+	int Flag=0;
 
 
 	protected boolean mOpenCameraFail;
@@ -48,6 +57,8 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	  //  surface_holder.setFormat(PixelFormat.OPAQUE);
           // surface_view.setZOrderMediaOverlay(true);
 	//surface_holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        setWillNotDraw(false);
+    //    getHolder.addCallback(this);
    	 }
 
 
@@ -99,6 +110,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 			int height) {
 		// TODO Auto-generated method stub
 		
+        	drawNosignal();
 		CameraPreviewThread cameraPreviewThread = new CameraPreviewThread();
 		cameraPreviewThread.setdelay(100);
 		cameraPreviewThread.start();
@@ -144,13 +156,26 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	public void drawNosignal() {        
 		Log.e(LOG_TAG, "Camera drawNosignal() Start");
 		Bitmap background = BitmapFactory.decodeResource(getResources(), R.drawable.nosignal);
-        float scale = (float) background.getHeight();
-        int newWidth = Math.round(background.getWidth());
-        int newHeight = Math.round(background.getHeight());
-        Bitmap scaled = Bitmap.createScaledBitmap(background, newWidth, newHeight, true);    
+        float scaleW = (float) background.getWidth()/(float)getWidth();
+        float scaleH = (float) background.getHeight()/(float)getHeight();
+        newWidth = Math.round(background.getWidth()/scaleW);
+        newHeight = Math.round(background.getHeight()/scaleH);
+        scaled = Bitmap.createScaledBitmap(background, newWidth, newHeight, true); 
+ 
         Log.e(LOG_TAG, "Camera drawNosignal() Finish");
    	 }
 
+	public void onDraw(Canvas canvas) {
+		
+	       Log.e(LOG_TAG, " __FDK__ ");
+	  // if(Flag==0)
+		canvas.drawBitmap(scaled,0,0,null);
+//	    else
+//	    	canvas.drawColor(0xff000000);
+	    Flag=1;
+	    
+	//	Bcanvas=canvas;
+	}
 
 
     public class CameraOpenThread extends Thread {
@@ -170,13 +195,21 @@ public class CSurfaceView extends SurfaceView implements Callback{
         public void run() {
     		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
     		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
+//Paint paint=new Paint();
+//paint.setStyle(Style.FILL);
+//paint.setColor(0xff000000);
+//Bcanvas.drawRect(0,0,newWidth, newHeight, paint);
 
+    		//Bcanvas.drawColor(0xff000000);
+    		
+    		
 
         	if(mCamera!=null){
         		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
         		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
-          	     mCamera.startPreview();
+       	    // mCamera.startPreview(); // disabled camera temp for speed
         	}
+        	invalidate();
 
             }
 
