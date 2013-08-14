@@ -74,6 +74,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.File;
@@ -87,6 +88,7 @@ import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlSerializer;
 
 public class WizarmAIOTV extends Activity {
     /**
@@ -97,14 +99,16 @@ public class WizarmAIOTV extends Activity {
     /**
      * Keys during freeze/thaw.
      */
+    
     private static final String KEY_SAVE_GRID_OPENED = "grid.opened";
 
-    private static final String DEFAULT_FAVORITES_PATH = "etc/favorites.xml";
+    private static final String DEFAULT_FAVORITES_PATH = "/data/wizarm/wizfavorites.xml";
 
     private static final String TAG_FAVORITES = "favorites";
-    private static final String TAG_FAVORITE = "favorite";
+    private static final String TAG_FAVORITE = "item";
     private static final String TAG_PACKAGE = "package";
-    private static final String TAG_CLASS = "class";    
+    private static final String TAG_ICON = "icon";
+    private static final String TAG_FUNC = "funccase";    
 
     // Identifiers for option menu items
     private static final int MENU_WALLPAPER_SETTINGS = Menu.FIRST + 1;
@@ -151,7 +155,6 @@ public class WizarmAIOTV extends Activity {
         setContentView(R.layout.home);
         main=(LinearLayout) findViewById(R.id.wizhome);
 
-
         setDefaultWallpaper();
 
         loadApplications(true);
@@ -165,7 +168,7 @@ public class WizarmAIOTV extends Activity {
         mGridExit = AnimationUtils.loadAnimation(this, R.anim.grid_exit);
        
 
-
+        writeFavorites(2);//,"hello");
 	// fahad we need the icons at startup
 	showApplications(true);
  
@@ -184,7 +187,7 @@ public class WizarmAIOTV extends Activity {
         
         
 		try {
-			 String[] envp = null;
+			String[] envp = null;
 			proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "export LD_LIBRARY_PATH=/vendor/lib:/system/lib" , "service call activity "+ProcID+" s16 com.android.systemui" });
 
 		} catch (IOException e) {
@@ -227,7 +230,7 @@ public class WizarmAIOTV extends Activity {
             
            // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             
-                       
+            writeFavorites(2);//,"hello");
 
 
     }
@@ -363,6 +366,23 @@ public class WizarmAIOTV extends Activity {
      * Refreshes the favorite applications stacked over the all apps button.
      * The number of favorites depends on the user.
      */
+    
+    public static class XMLformat {
+    	String id;
+    	String icon;
+    	String pack;
+    	String funcase;
+	public XMLformat(String id,String icon,String pack,String funcase)
+	{
+	this.id=id;
+	this.icon=icon;
+	this.pack=pack;
+	this.funcase=funcase;
+	}
+
+    };
+    
+    
     private void bindFavorites(boolean isLaunching) {
         if (!isLaunching || mFavorites == null) {
 
@@ -376,7 +396,7 @@ public class WizarmAIOTV extends Activity {
             FileReader favReader;
 
             // Environment.getRootDirectory() is a fancy way of saying ANDROID_ROOT or "/system".
-            final File favFile = new File(Environment.getRootDirectory(), DEFAULT_FAVORITES_PATH);
+            final File favFile = new File(DEFAULT_FAVORITES_PATH);
             try {
                 favReader = new FileReader(favFile);
             } catch (FileNotFoundException e) {
@@ -389,34 +409,132 @@ public class WizarmAIOTV extends Activity {
 
             final PackageManager packageManager = getPackageManager();
 
+          Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
+      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
+      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
+      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
+      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
+      	  
+            
+            
             try {
+            	int i=0;
+            	//private String ns
                 final XmlPullParser parser = Xml.newPullParser();
+
                 parser.setInput(favReader);
 
                 beginDocument(parser, TAG_FAVORITES);
 
-                ApplicationInfo info;
+              //  ApplicationInfo info;
+                
+                //parser.require(XmlPullParser.START_TAG, "", "item");
 
-                while (true) {
-                    nextElement(parser);
-
+                while (parser.getEventType()!=XmlPullParser.END_DOCUMENT) {
+                	
+                   // nextElement(parser);
+		    parser.next();
                     String name = parser.getName();
+                 //   Log.w(LOG_TAG, "name = "+name);
+	        //   if (!TAG_FAVORITES.equals(name)) {Log.w(LOG_TAG, "Break?"); break;}
+		    
+		    if(name==null){continue;}
+		    if(name.equalsIgnoreCase("item"))
+		    {
+			i++;
+			continue;	
+		    }
+		    else if(name.equalsIgnoreCase("icon"))
+	    	    {
+                    
+                  	  if(parser.next()==XmlPullParser.TEXT)
+                   		 {
+							
+                			String result;
+                    			result=parser.getText();
+                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    	
+                   		 }
+
+		         parser.next(); // remove unwanted endtag
+                    }
+
+		    else if(name.equalsIgnoreCase("package"))
+	    	    {
+                    
+                  	  if(parser.next()==XmlPullParser.TEXT)
+                   		 {
+							
+                			String result;
+                    			result=parser.getText();
+                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    	
+                   		 }
+
+		         parser.next(); // remove unwanted endtag
+                    }
+
+		    else if(name.equalsIgnoreCase("funccase"))
+	    	    {
+                    
+                  	  if(parser.next()==XmlPullParser.TEXT)
+                   		 {
+							
+                			String result;
+                    			result=parser.getText();
+                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    	
+                   		 }
+
+		         parser.next(); // remove unwanted endtag
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+                   /*name = parser.getName();
+                    Log.w(LOG_TAG, "name = "+name);
+                    
+                    if(parser.next()==XmlPullParser.TEXT)
+                    {
+                    	result=parser.getText();
+                    	Log.w(LOG_TAG, "__FDK__"+result);
+                    	
+                    }
+                    
+                    name = parser.getName();
+                    Log.w(LOG_TAG, "name = "+name);
+                    
+                    name = parser.getName();
+                    Log.w(LOG_TAG, "name = "+name);
+
                     if (!TAG_FAVORITE.equals(name)) {
-                        break;
-                    }
+                    	 Log.w(LOG_TAG, "Break?");
+                   //     break;
+                    } */
 
-                    final String favoritePackage = parser.getAttributeValue(null, TAG_PACKAGE);
-                    final String favoriteClass = parser.getAttributeValue(null, TAG_CLASS);
+                 //   final String favoritePackage = parser.getAttributeValue(null, TAG_PACKAGE);
+                 //   final String favoriteClass = parser.getAttributeValue(null, TAG_FUNC);
+                    
+             //   Log.w(LOG_TAG, "__HELLO__ BOYS "+favoritePackage+favoriteClass);
 
-                    final ComponentName cn = new ComponentName(favoritePackage, favoriteClass);
-                    intent.setComponent(cn);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //    final ComponentName cn = new ComponentName(favoritePackage, favoriteClass);
+                 //   intent.setComponent(cn);
+                  //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                    info = getApplicationInfo(packageManager, intent);
-                    if (info != null) {
-                        info.intent = intent;
-                        mFavorites.addFirst(info);
-                    }
+                  //  info = getApplicationInfo(packageManager, intent);
+                  //  if (info != null) {
+                  //      info.intent = intent;
+                  //      mFavorites.addFirst(info);
+                  //  }
                 }
             } catch (XmlPullParserException e) {
                 Log.w(LOG_TAG, "Got exception parsing favorites.", e);
@@ -455,6 +573,134 @@ public class WizarmAIOTV extends Activity {
         }
     }
 
+
+
+    /**
+	Write into XML file to replace funcionality , functionality for 5, buttons
+     * 
+     */
+    private void writeFavorites(int nthbutton)//final ApplicationInfo info) 
+    {
+    
+    	FileReader favReader;
+    	//File favWriter;
+    	
+
+
+	   // check if file exist
+            // Environment.getRootDirectory() is a fancy way of saying ANDROID_ROOT or "/system".
+         final File favFile = new File(DEFAULT_FAVORITES_PATH);
+        
+	 if(favFile.exists()!= true){
+		try{
+			favFile.createNewFile();
+		}
+		catch (IOException e)
+		{
+              	  Log.e(LOG_TAG, "Couldn't create or open wiz favorites file " + favFile);
+              	  //return;
+		}
+	
+	 }
+	else{	
+            try {
+                favReader = new FileReader(favFile);
+            } catch (FileNotFoundException e) {
+                Log.e(LOG_TAG, "Couldn't find or open favorites file " + favFile);
+                //return;
+            }
+	}
+	 FileOutputStream favWriter;
+	 XMLformat data = null;
+	 String s;
+
+// 	data.id=1;
+ //	data.icon="hi";
+ 	//String pack;
+ 	//String funcase;
+ //	s=CreateString(data);
+	 
+	 XmlSerializer serializer=Xml.newSerializer();
+	 
+		 try {
+			favWriter=new FileOutputStream(favFile);
+			serializer.setOutput(favWriter,"UTF-8");
+			serializer.startDocument(null, Boolean.valueOf(true));
+			//serializer.setFeature("https://xmlpull.org/v1/foc/featu, arg1)
+			serializer.startTag(null,TAG_FAVORITES);
+			SerializeXMl(serializer,1,"f.d.draw","thepackage.wizarm","50");
+			SerializeXMl(serializer,2,"f.d.draw1","thepackage.wizarm","70");
+			SerializeXMl(serializer,3,"f.d.draw2","the","00000");
+	//		serializer.text(CreateString(1,"hi", "me","fine"));
+		//	serializer.text(CreateString(2,"hi", "meee","fine"));
+			serializer.endTag(null,TAG_FAVORITES);
+			serializer.endDocument();
+			serializer.flush();
+			favWriter.close();
+			
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+    }
+
+
+public static String CreateString(int id,String icon,String thepackage,String func)
+{
+	String format="<favourites>"+
+					 "<item id=%d>" +
+					 	"<icon>%s</icon>"+
+					 	"<package>%s</package>"+
+					 	"<func>%s</func>"+
+					 	"</item>"+
+				   "</favourites>";
+	return String.format(format,id,icon,thepackage,func);
+		
+}
+
+/*
+private static final String TAG_FAVORITES = "favorites";
+private static final String TAG_FAVORITE = "item";
+private static final String TAG_PACKAGE = "package";
+private static final String TAG_ICON = "icon";
+private static final String TAG_FUNC = "func";    */
+
+void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,String func) throws IllegalArgumentException, IllegalStateException, IOException
+{
+	
+	serializer.startTag(null,TAG_FAVORITE);
+	//serializer.attribute("",String.valueOf(id),String.valueOf(id));
+    //serializer.text();
+//	serializer.text(String.valueOf(id));
+	
+	serializer.startTag(null,TAG_ICON);
+	serializer.text(icon);
+	serializer.endTag(null,TAG_ICON);
+	
+	serializer.startTag(null,TAG_PACKAGE);
+	serializer.text(thepackage);
+	serializer.endTag(null,TAG_PACKAGE);
+	
+	serializer.startTag(null,TAG_FUNC);
+	serializer.text(func);
+	serializer.endTag(null,TAG_FUNC);
+	
+	serializer.endTag(null,TAG_FAVORITE);
+	
+	return;
+		
+}
+    
+    
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Refreshes the recently launched applications stacked over the favorites. The number
      * of recents depends on how many favorites are present.
@@ -1014,16 +1260,21 @@ public class WizarmAIOTV extends Activity {
 		break; 
 	case 0:
 	    // zero is for default app launching
-            startActivity(app.intent);
+            	startActivity(app.intent);
 	    break;
 	case 1:
      //        hideApplications();
-             HideOverlayapp();
+             	HideOverlayapp();
 	//	mShowApplicationsCheck.setVisibility(View.INVISIBLE); this works
 	   break;
 	case 3:
-             hideApplications();
-		startActionMode(mActionModeCallback);
+        	hideApplications();
+//        	CreateODialogFragment overlayfrag = new CreateODialogFragment();
+		LayoutInflater inflater =getLayoutInflater();
+ 		getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT));       	
+        //	setContentView(R.layout.overlaysetting);
+        //	setContentView(R.layout.home);
+	//	startActionMode(mActionModeCallback);
 		// show overlay function
 
 		break;
@@ -1035,6 +1286,7 @@ public class WizarmAIOTV extends Activity {
 	
       }
 }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// TAB Overlay setting Class function 
 public static Context appContext;
@@ -1142,7 +1394,7 @@ class MyTabsListener implements ActionBar.TabListener {
 
         @Override
         public void onTabSelected(Tab tab, FragmentTransaction ft) {
-                ft.replace(R.id.fragment_container, fragment);
+          //      ft.replace(R.id.fragment_container, fragment);
         }
 
         @Override
