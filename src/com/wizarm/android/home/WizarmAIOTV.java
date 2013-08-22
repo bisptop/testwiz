@@ -69,6 +69,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -115,6 +116,9 @@ public class WizarmAIOTV extends Activity {
     private static final int MENU_SEARCH = MENU_WALLPAPER_SETTINGS + 1;
     private static final int MENU_SETTINGS = MENU_SEARCH + 1;
 
+    
+    private OverlaySettingApplicationsStack OApplicationsStack;
+    
     /**
      * Maximum number of recent tasks to query.
      */
@@ -452,7 +456,7 @@ public class WizarmAIOTV extends Activity {
 							
                 			String result;
                     			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
                     	
                    		 }
 
@@ -467,7 +471,7 @@ public class WizarmAIOTV extends Activity {
 							
                 			String result;
                     			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
                     	
                    		 }
 
@@ -482,7 +486,7 @@ public class WizarmAIOTV extends Activity {
 							
                 			String result;
                     			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__"+result);
+                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
                     	
                    		 }
 
@@ -1207,11 +1211,11 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
      */
     private class ShowApplications implements View.OnClickListener {
         public void onClick(View v) {
-            if (mGrid.getVisibility() != View.VISIBLE) {
+/*            if (mGrid.getVisibility() != View.VISIBLE) {
                 showApplications(true);
             } else {
 //                hideApplications();
-            }
+            }*/
         }
     }
 
@@ -1250,6 +1254,9 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
      * Starts the selected activity/application in the grid view.
      */
     private class ApplicationLauncher implements AdapterView.OnItemClickListener {
+        /* (non-Javadoc)
+         * @see android.widget.AdapterView.OnItemClickListener#onItemClick(android.widget.AdapterView, android.view.View, int, long)
+         */
         public void onItemClick(AdapterView parent, View v, int position, long id) {
             ApplicationInfo app = (ApplicationInfo) parent.getItemAtPosition(position);
             
@@ -1268,14 +1275,39 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	//	mShowApplicationsCheck.setVisibility(View.INVISIBLE); this works
 	   break;
 	case 3:
-        	hideApplications();
+        //	hideApplications();
+        	//addContentView(R.layout.overlaysetting);
+       // 	OApplicationsStack=new OverlaySettingApplicationsStack(null);
 //        	CreateODialogFragment overlayfrag = new CreateODialogFragment();
 		LayoutInflater inflater =getLayoutInflater();
- 		getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT));       	
-        //	setContentView(R.layout.overlaysetting);
+
+FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
+LayoutParams vg=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
+
+	//getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),vg);
+getWindow().setContentView(inflater.inflate(R.layout.overlaysetting,mainlayout,true),vg);
+
+LinearLayout mainlayout2= (LinearLayout)findViewById(R.id.mainLayoutsecond);
+mainlayout2.setOnClickListener(new OverlaySettingApplicationsStack(null));
+ 		
+ 		
+	//	getWindow().addContentView();;
+ //		LinearLayout ovsetting=(LinearLayout) findViewById(R.id.main);
+        	
+ //		OApplicationsStack= (OverlaySettingApplicationsStack)(findViewById(R.id.faves_and_recents));
+ 		//OApplicationsStack.initLayout();
+ 		//OApplicationsStack.setOnClickListener(OApplicationsStack);
+ 		//ovsetting.setOnClickListener(OApplicationsStack);
+     
+ 		//	setContentView(R.layout.overlaysetting);
         //	setContentView(R.layout.home);
 	//	startActionMode(mActionModeCallback);
 		// show overlay function
+ 	/*	
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewGroup vg = (ViewGroup) inflater.inflate(R.layout.overlaysetting, null);
+        setContentView(vg);*/
+
 
 		break;
 
