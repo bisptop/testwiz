@@ -1275,7 +1275,7 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	//	mShowApplicationsCheck.setVisibility(View.INVISIBLE); this works
 	   break;
 	case 3:
-        //	hideApplications();
+        	hideApplications();
         	//addContentView(R.layout.overlaysetting);
        // 	OApplicationsStack=new OverlaySettingApplicationsStack(null);
 //        	CreateODialogFragment overlayfrag = new CreateODialogFragment();
@@ -1284,12 +1284,12 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
 LayoutParams vg=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
 
-	//getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),vg);
+//	getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),vg);
 getWindow().setContentView(inflater.inflate(R.layout.overlaysetting,mainlayout,true),vg);
 
-LinearLayout mainlayout2= (LinearLayout)findViewById(R.id.mainLayoutsecond);
+/*LinearLayout mainlayout2= (LinearLayout)findViewById(R.id.mainLayoutsecond);
 mainlayout2.setOnClickListener(new OverlaySettingApplicationsStack(null));
- 		
+ */		
  		
 	//	getWindow().addContentView();;
  //		LinearLayout ovsetting=(LinearLayout) findViewById(R.id.main);

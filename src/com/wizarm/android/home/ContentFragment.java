@@ -139,9 +139,9 @@ public class ContentFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Set member variable for whether this fragment is the only one in the activity
+     /*   // Set member variable for whether this fragment is the only one in the activity
         Fragment listFragment = getFragmentManager().findFragmentById(R.id.titles_frag);
-        mSoloFragment = listFragment == null ? true : false;
+        mSoloFragment = listFragment == null ? true : false; */
 
         if (mSoloFragment) {
             // The fragment is alone, so enable up navigation
@@ -258,9 +258,9 @@ public class ContentFragment extends Fragment {
                     }
                     updateContentAndRecycleBitmap(category, entryId);
                     // Update list fragment with selected entry.
-                    TitlesFragment titlesFrag = (TitlesFragment)
+                /*    TitlesFragment titlesFrag = (TitlesFragment)
                             getFragmentManager().findFragmentById(R.id.titles_frag);
-                    titlesFrag.selectPosition(entryId);
+                    titlesFrag.selectPosition(entryId); fahad*/
                     return true;
                 }
             }

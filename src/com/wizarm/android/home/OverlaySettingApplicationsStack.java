@@ -1,13 +1,16 @@
 package com.wizarm.android.home;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 
 
@@ -18,7 +21,7 @@ public class OverlaySettingApplicationsStack extends ViewGroup implements View.O
 {
 
 private static final String LOG_TAG = "WizarmTV";
-private LayoutInflater inflater;
+private LayoutInflater minflater;
 ViewGroup view_group;
 
 View curView;
@@ -38,10 +41,26 @@ public OverlaySettingApplicationsStack(Context context, AttributeSet attrs) {
 }
 
 void initLayout() {
-inflater = LayoutInflater.from(getContext());
+minflater = LayoutInflater.from(getContext());
+FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
+
 //LinearLayout ovsetting=(LinearLayout) findViewById(R.layout.overlaysetting);
-//LinearLayout ovsetting=(LinearLayout) mInflater.inflate(R.layout.overlaysetting, this, false);
+LinearLayout ovsetting=(LinearLayout) minflater.inflate(R.layout.overlayset,mainlayout,false);
+addView(ovsetting);
+//LinearLayout ovsetting=(LinearLayout) findViewById(R.layout.overlayset);
 //addView(ovsetting);
+//ovsetting.setVisibility(View.VISIBLE);
+//Only initalize onclick lisners
+
+//GridView gridview = (GridView) findViewById(R.id.gridview);
+
+Button Buttonview = (Button) findViewById(R.id.mainbut);
+//Button Buttonview = (Button) findViewById(R.id.settingbutton);
+Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting "+Buttonview);
+Buttonview.setOnClickListener(this);
+
+
+
 
 
 
@@ -71,9 +90,19 @@ Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting ");
 Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting ");
 //curView=mInflater.inflate(R.layout.overlaysetting,null);
 //addView(curView);
+Drawable mBackground = getBackground();
+setBackgroundDrawable(null);
+setWillNotDraw(false);
 
 
 }
+
+
+public void setView(int v){
+
+
+}
+
 
 
 

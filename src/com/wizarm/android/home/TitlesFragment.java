@@ -79,9 +79,9 @@ public class TitlesFragment extends ListFragment implements ActionBar.TabListene
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ContentFragment frag = (ContentFragment) getFragmentManager()
-                .findFragmentById(R.id.content_frag);
-        if (frag != null) mDualFragments = true;
+       /* ContentFragment frag = (ContentFragment) getFragmentManager()
+                .findFragmentById(R.id.content_frag); fahad*/
+      //  if (frag != null) mDualFragments = true;
 
         ActionBar bar = getActivity().getActionBar();
         bar.setDisplayHomeAsUpEnabled(false);
@@ -235,13 +235,13 @@ public class TitlesFragment extends ListFragment implements ActionBar.TabListene
      */
 
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        TitlesFragment titleFrag = (TitlesFragment) getFragmentManager()
+    /*    TitlesFragment titleFrag = (TitlesFragment) getFragmentManager()
                 .findFragmentById(R.id.titles_frag);
         titleFrag.populateTitles(tab.getPosition());
         
         if (mDualFragments) {
             titleFrag.selectPosition(0);
-        }
+        } fahad*/
     }
 
     /* These must be implemented, but we don't use them */
