@@ -150,6 +150,8 @@ public class WizarmAIOTV extends Activity {
     private Animation mGridEntry;
     private Animation mGridExit;
     
+    protected Context thiscontext;
+    
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -159,6 +161,8 @@ public class WizarmAIOTV extends Activity {
         setContentView(R.layout.home);
         main=(LinearLayout) findViewById(R.id.wizhome);
 
+        thiscontext=this;
+        
         setDefaultWallpaper();
 
         loadApplications(true);
@@ -1276,16 +1280,23 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	   break;
 	case 3:
         	hideApplications();
+        	
+        	FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
+            ViewGroup vg = new OverlaySettingApplicationsStack(thiscontext); 
+            setContentView(vg);
+        	
+        	
+        	
         	//addContentView(R.layout.overlaysetting);
        // 	OApplicationsStack=new OverlaySettingApplicationsStack(null);
 //        	CreateODialogFragment overlayfrag = new CreateODialogFragment();
-		LayoutInflater inflater =getLayoutInflater();
+	//	LayoutInflater inflater =getLayoutInflater();
 
-FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
-LayoutParams vg=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
+//FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
+//LayoutParams vg=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
 
 //	getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),vg);
-getWindow().setContentView(inflater.inflate(R.layout.overlaysetting,mainlayout,true),vg);
+//getWindow().setContentView(inflater.inflate(R.layout.overlaysetting,mainlayout,true),vg);
 
 /*LinearLayout mainlayout2= (LinearLayout)findViewById(R.id.mainLayoutsecond);
 mainlayout2.setOnClickListener(new OverlaySettingApplicationsStack(null));

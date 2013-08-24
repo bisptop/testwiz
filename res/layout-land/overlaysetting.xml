@@ -14,20 +14,19 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/mainLayoutsecond"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="horizontal"
-	android:padding="30dp">
+	android:padding="30dp"
+	android:background="@drawable/application_backgroundfull">	
+	
 
-<com.wizarm.android.home.OverlaySettingApplicationsStack android:id="@+id/mainLayoutsecondview"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-		android:background="@drawable/application_background" 
-/>
-
- <Button
+	
+	
+ 
+<Button
 	 android:id="@+id/settingbutton"
         android:layout_width="214dp"
         android:layout_height="wrap_content"
@@ -79,4 +78,4 @@
     
 </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
