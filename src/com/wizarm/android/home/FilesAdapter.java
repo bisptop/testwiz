@@ -1,5 +1,4 @@
-/*
-package com.izambasiron.free.linktofile;
+package com.wizarm.android.home;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,8 +42,7 @@ public class FilesAdapter extends BaseAdapter {
 			int pathColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_PATH);
 			int mimeColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_MIME);
 		    files.add(new FileItem(filesCursor.getInt(rowIdColId), filesCursor.getString(nameColId),
-		    		filesCursor.getInt(iconColId), filesCursor.getString(pathColId), 
-		    		filesCursor.getString(mimeColId), null));
+		    		filesCursor.getInt(iconColId), filesCursor.getString(pathColId),  null));
 		}
 		
 		li =  (LayoutInflater)mCtx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -83,7 +81,7 @@ public class FilesAdapter extends BaseAdapter {
 	public Boolean addItem(String name, String path, int icon, String mime) {
 		long rowId = dbAdapter.createFile(name, path, icon, mime);
 		if (rowId > 0) {
-			files.add(new FileItem(rowId, name, icon, path, mime, null));
+			files.add(new FileItem(rowId, name, icon, path, null));
 			notifyDataSetChanged();
 			return true;
 		} else {
@@ -107,9 +105,9 @@ public class FilesAdapter extends BaseAdapter {
 	
 	private void removeShortcut(int position) {
 		FileItem file = files.get(position);
-		Uri uri = Uri.fromFile(new File(file.PATH));
+		Uri uri = Uri.fromFile(new File(file.PACKAGE));
 		final Intent shortcutIntent = new Intent(Intent.ACTION_VIEW);
-		shortcutIntent.setDataAndType(uri, file.MIME);
+	//	shortcutIntent.setDataAndType(uri, file.MIME);
 		
 		Intent removeIntent = new Intent();
 		removeIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
@@ -120,41 +118,8 @@ public class FilesAdapter extends BaseAdapter {
 		mCtx.sendBroadcast(removeIntent);
 	}
 
-	public final class FileItem extends DataSetObservable{
-		public long _ID;
-		public String NAME;
-		public int ICON;
-		public String PATH;
-		public String SHORTCUT;
-		public String MIME;
-		
-		public FileItem(long id, String name, int icon, String path, String mime, String shortcut) {
-			_ID = id;
-			NAME = name;
-			ICON = icon;
-			PATH = path;
-			SHORTCUT = shortcut;
-			MIME = mime;
-		}
-		
-		public FileItem(long id, String name, int icon) {
-			_ID = id;
-			NAME = name;
-			ICON = icon;
-		}
-		
-		public void setValues(String name, int icon, String path, String mime, String shortcut) {
-			NAME = name;
-			ICON = icon;
-			PATH = path;
-			SHORTCUT = shortcut;
-			MIME = mime;
-			notifyChanged();
-		}
-	}
-
 	public void close() {
 		dbAdapter.close();
 	}
 }
-*/
+

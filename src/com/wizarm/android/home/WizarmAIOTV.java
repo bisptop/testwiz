@@ -91,6 +91,9 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlSerializer;
 
+import com.wizarm.android.home.OverlaySettingApplicationsStack;
+
+
 public class WizarmAIOTV extends Activity {
     /**
      * Tag used for logging errors.
@@ -149,7 +152,9 @@ public class WizarmAIOTV extends Activity {
 
     private Animation mGridEntry;
     private Animation mGridExit;
-    
+	
+
+    protected Intent Ointent;
     protected Context thiscontext;
     
     @Override
@@ -168,15 +173,18 @@ public class WizarmAIOTV extends Activity {
         loadApplications(true);
 
         bindApplications();
-        bindFavorites(true);
+
         bindRecents();
         bindButtons();
 
+        
+        
         mGridEntry = AnimationUtils.loadAnimation(this, R.anim.grid_entry);
         mGridExit = AnimationUtils.loadAnimation(this, R.anim.grid_exit);
        
+        Ointent =new Intent(this, OverlaySettingApplicationsStack.class);
 
-        writeFavorites(2);//,"hello");
+;
 	// fahad we need the icons at startup
 	showApplications(true);
  
@@ -238,7 +246,6 @@ public class WizarmAIOTV extends Activity {
             
            // getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             
-            writeFavorites(2);//,"hello");
 
 
     }
@@ -353,7 +360,7 @@ public class WizarmAIOTV extends Activity {
         Log.e(LOG_TAG, "Camera init " + mNumberOfCameras);
         Log.e(LOG_TAG, "Camera init 0-----------------------000 FIN 1" + mCamera);
 
-	mCurrentCamera=0;
+		mCurrentCamera=0;
       /* Temp probs with hdmi */
         csurface=(CSurfaceView)findViewById(R.id.surface);
         surface_holder=csurface.getHolder();
@@ -390,321 +397,7 @@ public class WizarmAIOTV extends Activity {
 
     };
     
-    
-    private void bindFavorites(boolean isLaunching) {
-        if (!isLaunching || mFavorites == null) {
-
-            if (mFavorites == null) {
-                mFavorites = new LinkedList<ApplicationInfo>();
-            } else {
-                mFavorites.clear();
-            }
-
-            
-            FileReader favReader;
-
-            // Environment.getRootDirectory() is a fancy way of saying ANDROID_ROOT or "/system".
-            final File favFile = new File(DEFAULT_FAVORITES_PATH);
-            try {
-                favReader = new FileReader(favFile);
-            } catch (FileNotFoundException e) {
-                Log.e(LOG_TAG, "Couldn't find or open favorites file " + favFile);
-                return;
-            }
-
-            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-            final PackageManager packageManager = getPackageManager();
-
-          Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(LOG_TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  
-            
-            
-            try {
-            	int i=0;
-            	//private String ns
-                final XmlPullParser parser = Xml.newPullParser();
-
-                parser.setInput(favReader);
-
-                beginDocument(parser, TAG_FAVORITES);
-
-              //  ApplicationInfo info;
-                
-                //parser.require(XmlPullParser.START_TAG, "", "item");
-
-                while (parser.getEventType()!=XmlPullParser.END_DOCUMENT) {
-                	
-                   // nextElement(parser);
-		    parser.next();
-                    String name = parser.getName();
-                 //   Log.w(LOG_TAG, "name = "+name);
-	        //   if (!TAG_FAVORITES.equals(name)) {Log.w(LOG_TAG, "Break?"); break;}
-		    
-		    if(name==null){continue;}
-		    if(name.equalsIgnoreCase("item"))
-		    {
-			i++;
-			continue;	
-		    }
-		    else if(name.equalsIgnoreCase("icon"))
-	    	    {
-                    
-                  	  if(parser.next()==XmlPullParser.TEXT)
-                   		 {
-							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
-                    	
-                   		 }
-
-		         parser.next(); // remove unwanted endtag
-                    }
-
-		    else if(name.equalsIgnoreCase("package"))
-	    	    {
-                    
-                  	  if(parser.next()==XmlPullParser.TEXT)
-                   		 {
-							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
-                    	
-                   		 }
-
-		         parser.next(); // remove unwanted endtag
-                    }
-
-		    else if(name.equalsIgnoreCase("funccase"))
-	    	    {
-                    
-                  	  if(parser.next()==XmlPullParser.TEXT)
-                   		 {
-							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(LOG_TAG, "__FDK__ XML"+result);
-                    	
-                   		 }
-
-		         parser.next(); // remove unwanted endtag
-                    }
-
-
-
-
-
-
-
-
-
-
-
-
-                   /*name = parser.getName();
-                    Log.w(LOG_TAG, "name = "+name);
-                    
-                    if(parser.next()==XmlPullParser.TEXT)
-                    {
-                    	result=parser.getText();
-                    	Log.w(LOG_TAG, "__FDK__"+result);
-                    	
-                    }
-                    
-                    name = parser.getName();
-                    Log.w(LOG_TAG, "name = "+name);
-                    
-                    name = parser.getName();
-                    Log.w(LOG_TAG, "name = "+name);
-
-                    if (!TAG_FAVORITE.equals(name)) {
-                    	 Log.w(LOG_TAG, "Break?");
-                   //     break;
-                    } */
-
-                 //   final String favoritePackage = parser.getAttributeValue(null, TAG_PACKAGE);
-                 //   final String favoriteClass = parser.getAttributeValue(null, TAG_FUNC);
-                    
-             //   Log.w(LOG_TAG, "__HELLO__ BOYS "+favoritePackage+favoriteClass);
-
-                //    final ComponentName cn = new ComponentName(favoritePackage, favoriteClass);
-                 //   intent.setComponent(cn);
-                  //  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                  //  info = getApplicationInfo(packageManager, intent);
-                  //  if (info != null) {
-                  //      info.intent = intent;
-                  //      mFavorites.addFirst(info);
-                  //  }
-                }
-            } catch (XmlPullParserException e) {
-                Log.w(LOG_TAG, "Got exception parsing favorites.", e);
-            } catch (IOException e) {
-                Log.w(LOG_TAG, "Got exception parsing favorites.", e);
-            }
-        }
-
-
-    }
-
-    private static void beginDocument(XmlPullParser parser, String firstElementName)
-            throws XmlPullParserException, IOException {
-
-        int type;
-        while ((type = parser.next()) != XmlPullParser.START_TAG &&
-                type != XmlPullParser.END_DOCUMENT) {
-            // Empty
-        }
-
-        if (type != XmlPullParser.START_TAG) {
-            throw new XmlPullParserException("No start tag found");
-        }
-
-        if (!parser.getName().equals(firstElementName)) {
-            throw new XmlPullParserException("Unexpected start tag: found " + parser.getName() +
-                    ", expected " + firstElementName);
-        }
-    }
-
-    private static void nextElement(XmlPullParser parser) throws XmlPullParserException, IOException {
-        int type;
-        while ((type = parser.next()) != XmlPullParser.START_TAG &&
-                type != XmlPullParser.END_DOCUMENT) {
-            // Empty
-        }
-    }
-
-
-
-    /**
-	Write into XML file to replace funcionality , functionality for 5, buttons
-     * 
-     */
-    private void writeFavorites(int nthbutton)//final ApplicationInfo info) 
-    {
-    
-    	FileReader favReader;
-    	//File favWriter;
-    	
-
-
-	   // check if file exist
-            // Environment.getRootDirectory() is a fancy way of saying ANDROID_ROOT or "/system".
-         final File favFile = new File(DEFAULT_FAVORITES_PATH);
-        
-	 if(favFile.exists()!= true){
-		try{
-			favFile.createNewFile();
-		}
-		catch (IOException e)
-		{
-              	  Log.e(LOG_TAG, "Couldn't create or open wiz favorites file " + favFile);
-              	  //return;
-		}
-	
-	 }
-	else{	
-            try {
-                favReader = new FileReader(favFile);
-            } catch (FileNotFoundException e) {
-                Log.e(LOG_TAG, "Couldn't find or open favorites file " + favFile);
-                //return;
-            }
-	}
-	 FileOutputStream favWriter;
-	 XMLformat data = null;
-	 String s;
-
-// 	data.id=1;
- //	data.icon="hi";
- 	//String pack;
- 	//String funcase;
- //	s=CreateString(data);
-	 
-	 XmlSerializer serializer=Xml.newSerializer();
-	 
-		 try {
-			favWriter=new FileOutputStream(favFile);
-			serializer.setOutput(favWriter,"UTF-8");
-			serializer.startDocument(null, Boolean.valueOf(true));
-			//serializer.setFeature("https://xmlpull.org/v1/foc/featu, arg1)
-			serializer.startTag(null,TAG_FAVORITES);
-			SerializeXMl(serializer,1,"f.d.draw","thepackage.wizarm","50");
-			SerializeXMl(serializer,2,"f.d.draw1","thepackage.wizarm","70");
-			SerializeXMl(serializer,3,"f.d.draw2","the","00000");
-	//		serializer.text(CreateString(1,"hi", "me","fine"));
-		//	serializer.text(CreateString(2,"hi", "meee","fine"));
-			serializer.endTag(null,TAG_FAVORITES);
-			serializer.endDocument();
-			serializer.flush();
-			favWriter.close();
-			
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-    }
-
-
-public static String CreateString(int id,String icon,String thepackage,String func)
-{
-	String format="<favourites>"+
-					 "<item id=%d>" +
-					 	"<icon>%s</icon>"+
-					 	"<package>%s</package>"+
-					 	"<func>%s</func>"+
-					 	"</item>"+
-				   "</favourites>";
-	return String.format(format,id,icon,thepackage,func);
-		
-}
-
-/*
-private static final String TAG_FAVORITES = "favorites";
-private static final String TAG_FAVORITE = "item";
-private static final String TAG_PACKAGE = "package";
-private static final String TAG_ICON = "icon";
-private static final String TAG_FUNC = "func";    */
-
-void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,String func) throws IllegalArgumentException, IllegalStateException, IOException
-{
-	
-	serializer.startTag(null,TAG_FAVORITE);
-	//serializer.attribute("",String.valueOf(id),String.valueOf(id));
-    //serializer.text();
-//	serializer.text(String.valueOf(id));
-	
-	serializer.startTag(null,TAG_ICON);
-	serializer.text(icon);
-	serializer.endTag(null,TAG_ICON);
-	
-	serializer.startTag(null,TAG_PACKAGE);
-	serializer.text(thepackage);
-	serializer.endTag(null,TAG_PACKAGE);
-	
-	serializer.startTag(null,TAG_FUNC);
-	serializer.text(func);
-	serializer.endTag(null,TAG_FUNC);
-	
-	serializer.endTag(null,TAG_FAVORITE);
-	
-	return;
-		
-}
+  
     
     
 
@@ -1131,7 +824,6 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
             loadApplications(false);
             bindApplications();
             bindRecents();
-            bindFavorites(false);
         }
     }
 
@@ -1281,44 +973,8 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	case 3:
         	hideApplications();
         	
-        	FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
-            ViewGroup vg = new OverlaySettingApplicationsStack(thiscontext); 
-            setContentView(vg);
-        	
-        	
-        	
-        	//addContentView(R.layout.overlaysetting);
-       // 	OApplicationsStack=new OverlaySettingApplicationsStack(null);
-//        	CreateODialogFragment overlayfrag = new CreateODialogFragment();
-	//	LayoutInflater inflater =getLayoutInflater();
-
-//FrameLayout mainlayout= (FrameLayout)findViewById(R.id.mainLayout);
-//LayoutParams vg=new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
-
-//	getWindow().addContentView(inflater.inflate(R.layout.overlaysetting,null),vg);
-//getWindow().setContentView(inflater.inflate(R.layout.overlaysetting,mainlayout,true),vg);
-
-/*LinearLayout mainlayout2= (LinearLayout)findViewById(R.id.mainLayoutsecond);
-mainlayout2.setOnClickListener(new OverlaySettingApplicationsStack(null));
- */		
- 		
-	//	getWindow().addContentView();;
- //		LinearLayout ovsetting=(LinearLayout) findViewById(R.id.main);
-        	
- //		OApplicationsStack= (OverlaySettingApplicationsStack)(findViewById(R.id.faves_and_recents));
- 		//OApplicationsStack.initLayout();
- 		//OApplicationsStack.setOnClickListener(OApplicationsStack);
- 		//ovsetting.setOnClickListener(OApplicationsStack);
-     
- 		//	setContentView(R.layout.overlaysetting);
-        //	setContentView(R.layout.home);
-	//	startActionMode(mActionModeCallback);
-		// show overlay function
- 	/*	
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ViewGroup vg = (ViewGroup) inflater.inflate(R.layout.overlaysetting, null);
-        setContentView(vg);*/
-
+        	startActivityForResult(Ointent, 1111);
+        	//startActivity(Ointent);
 
 		break;
 
@@ -1329,135 +985,23 @@ mainlayout2.setOnClickListener(new OverlaySettingApplicationsStack(null));
 	
       }
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/// TAB Overlay setting Class function 
-public static Context appContext;
-
-
-private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-
-
-public void createOverlay(boolean show)
-{
-
-	appContext = getApplicationContext();
-
-	       //ActionBar
-        ActionBar actionbar = getActionBar();
-        actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        ActionBar.Tab PlayerTab = actionbar.newTab().setText("Fragment A");
-        ActionBar.Tab StationsTab = actionbar.newTab().setText("Fragment B");
-
-
-        Fragment PlayerFragment = new AFragment();
-        Fragment StationsFragment = new BFragment();
-
-        PlayerTab.setTabListener(new MyTabsListener(PlayerFragment));
-        StationsTab.setTabListener(new MyTabsListener(StationsFragment));
-
-        actionbar.addTab(PlayerTab);
-        actionbar.addTab(StationsTab);
-
-}
-
+    
     @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false; // Return false if nothing is done
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent result) {
+      if (requestCode==1111 && resultCode==RESULT_OK) {
+  //      mixer.setColor(result.getIntExtra(ColorMixerActivity.COLOR,
+   //                                       mixer.getColor()));
+    	  showApplications(true);
+    	  
+      }
+      else {
+        super.onActivityResult(requestCode, resultCode, result);
+      }
     }
 
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        switch (item.getItemId()) {
-//            case R.id.menu_share:
-  //              shareCurrentItem();
-  //              mode.finish(); // Action picked, so close the CAB
-   //             return true;
-            default:
-                return false;
-        }
-    }
-
-
- public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-//	createOverlay(true);
-
-       Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting ");
-       Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting ");
-       Log.e(LOG_TAG, "_FDK______  onCreateOptionsMenuforOverlaySetting ");
-        return true;
-    }
-
-
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt("tab", getActionBar().getSelectedNavigationIndex());
-    }
-
-
-
-        public boolean onOptionsItemSelected(MenuItem item) {
-                switch(item.getItemId()) {
-                        case R.id.menuitem_search:
-                                Toast.makeText(appContext, "search", Toast.LENGTH_SHORT).show();
-                                return true;
-                        case R.id.menuitem_add:
-                                Toast.makeText(appContext, "add", Toast.LENGTH_SHORT).show();
-                                return true;
-                        case R.id.menuitem_share:
-                                Toast.makeText(appContext, "share", Toast.LENGTH_SHORT).show();
-                                return true;
-                        case R.id.menuitem_feedback:
-                                Toast.makeText(appContext, "feedback", Toast.LENGTH_SHORT).show();
-                                return true;
-                        case R.id.menuitem_about:
-                                Toast.makeText(appContext, "about", Toast.LENGTH_SHORT).show();
-                                return true;
-                        case R.id.menuitem_quit:
-                                Toast.makeText(appContext, "quit", Toast.LENGTH_SHORT).show();
-                                return true;
-                }
-                return false;
-        }
-
-
-class MyTabsListener implements ActionBar.TabListener {
-        public Fragment fragment;
-
-        public MyTabsListener(Fragment fragment) {
-                this.fragment = fragment;
-        }
-
-        @Override
-        public void onTabReselected(Tab tab, FragmentTransaction ft) {
-                Toast.makeText(WizarmAIOTV.appContext, "Reselected!", Toast.LENGTH_LONG).show();
-        }
-
-        @Override
-        public void onTabSelected(Tab tab, FragmentTransaction ft) {
-          //      ft.replace(R.id.fragment_container, fragment);
-        }
-
-        @Override
-        public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-                ft.remove(fragment);
-        }
-
-}
-
-
-    @Override
-    public void onDestroyActionMode(ActionMode mode) {
-    //   mActionMode = null;
-    }
-
-
-
-
-};
-
+    
+    
 
 
 
