@@ -22,12 +22,10 @@
 	android:padding="30dp"
 	android:background="@drawable/application_backgroundfull">	
 	
-
-	
 	
  
 <Button
-	 android:id="@+id/settingbutton"
+	android:id="@+id/settingbutton"
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:gravity="bottom"

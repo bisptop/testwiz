@@ -1,0 +1,416 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AFragment	src/com/wizarm/android/home/AFragment.java	/^public class AFragment extends Fragment {$/;"	c
+ApplicationInfo	src/com/wizarm/android/home/ApplicationInfo.java	/^class ApplicationInfo {$/;"	c
+ApplicationLauncher	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class ApplicationLauncher implements AdapterView.OnItemClickListener {$/;"	c	class:WizarmAIOTV
+ApplicationsAdapter	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public ApplicationsAdapter(Context context, ArrayList<ApplicationInfo> apps) {$/;"	m	class:WizarmAIOTV.ApplicationsAdapter
+ApplicationsAdapter	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class ApplicationsAdapter extends ArrayAdapter<ApplicationInfo> {$/;"	c	class:WizarmAIOTV
+ApplicationsIntentReceiver	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class ApplicationsIntentReceiver extends BroadcastReceiver {$/;"	c	class:WizarmAIOTV
+ApplicationsStackLayout	gen/com/wizarm/android/home/R.java	/^        public static final int[] ApplicationsStackLayout = {$/;"	f	class:R.styleable
+ApplicationsStackLayout_marginBottom	gen/com/wizarm/android/home/R.java	/^        public static final int ApplicationsStackLayout_marginBottom = 4;$/;"	f	class:R.styleable
+ApplicationsStackLayout_marginLeft	gen/com/wizarm/android/home/R.java	/^        public static final int ApplicationsStackLayout_marginLeft = 1;$/;"	f	class:R.styleable
+ApplicationsStackLayout_marginRight	gen/com/wizarm/android/home/R.java	/^        public static final int ApplicationsStackLayout_marginRight = 3;$/;"	f	class:R.styleable
+ApplicationsStackLayout_marginTop	gen/com/wizarm/android/home/R.java	/^        public static final int ApplicationsStackLayout_marginTop = 2;$/;"	f	class:R.styleable
+ApplicationsStackLayout_stackOrientation	gen/com/wizarm/android/home/R.java	/^        public static final int ApplicationsStackLayout_stackOrientation = 0;$/;"	f	class:R.styleable
+BFragment	src/com/wizarm/android/home/BFragment.java	/^public class BFragment extends Fragment {$/;"	c
+Bcanvas	src/com/wizarm/android/home/CSurfaceView.java	/^	Canvas Bcanvas;$/;"	f	class:CSurfaceView
+BuildConfig	gen/com/wizarm/android/home/BuildConfig.java	/^public final class BuildConfig {$/;"	c
+CSurfaceView	src/com/wizarm/android/home/CSurfaceView.java	/^	public CSurfaceView(Context context, AttributeSet attrs) {$/;"	m	class:CSurfaceView
+CSurfaceView	src/com/wizarm/android/home/CSurfaceView.java	/^public class CSurfaceView extends SurfaceView implements Callback{$/;"	c
+CameraOpenThread	src/com/wizarm/android/home/CSurfaceView.java	/^    public class CameraOpenThread extends Thread {$/;"	c	class:CSurfaceView
+CameraPreviewThread	src/com/wizarm/android/home/CSurfaceView.java	/^    public class CameraPreviewThread extends Thread {$/;"	c	class:CSurfaceView
+CameraSetup	src/com/wizarm/android/home/CSurfaceView.java	/^	public int CameraSetup(){$/;"	m	class:CSurfaceView
+ContentFragment	src/com/wizarm/android/home/ContentFragment.java	/^public class ContentFragment extends Fragment {$/;"	c
+CreateODialogFragment	src/com/wizarm/android/home/CreateODialogFragment.java	/^public class CreateODialogFragment extends DialogFragment  {$/;"	c
+DATABASE_NAME	src/com/wizarm/android/home/MySQLiteHelper.java	/^private static final String DATABASE_NAME = "wizarmtv.db";$/;"	f	class:MySQLiteHelper	file:
+DATABASE_VERSION	src/com/wizarm/android/home/MySQLiteHelper.java	/^private static final int DATABASE_VERSION = 1;$/;"	f	class:MySQLiteHelper	file:
+DEBUG	gen/com/wizarm/android/home/BuildConfig.java	/^    public final static boolean DEBUG = true;$/;"	f	class:BuildConfig
+DEFAULT_FAVORITES_PATH	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String DEFAULT_FAVORITES_PATH = "\/data\/wizarm\/wizfavorites.xml";$/;"	f	class:FilesDbAdapter	file:
+DEFAULT_FAVORITES_PATH	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String DEFAULT_FAVORITES_PATH = "\/data\/wizarm\/wizfavorites.xml";$/;"	f	class:WizarmAIOTV	file:
+FUNCCASE	src/com/wizarm/android/home/FilesAdapter.java	/^		public int FUNCCASE;$/;"	f	class:FilesAdapter.FileItem
+FileItem	src/com/wizarm/android/home/FilesAdapter.java	/^		public FileItem(long id, String name, int icon) {$/;"	m	class:FilesAdapter.FileItem
+FileItem	src/com/wizarm/android/home/FilesAdapter.java	/^		public FileItem(long id, String name, int icon, String path, String shortcut) {$/;"	m	class:FilesAdapter.FileItem
+FileItem	src/com/wizarm/android/home/FilesAdapter.java	/^	public final class FileItem extends DataSetObservable{$/;"	c	class:FilesAdapter
+FilesAdapter	src/com/wizarm/android/home/FilesAdapter.java	/^	public FilesAdapter(Context ctx) {$/;"	m	class:FilesAdapter
+FilesAdapter	src/com/wizarm/android/home/FilesAdapter.java	/^public class FilesAdapter extends BaseAdapter {$/;"	c
+FilesDbAdapter	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public FilesDbAdapter(Context ctx) {$/;"	m	class:FilesDbAdapter
+FilesDbAdapter	src/com/wizarm/android/home/FilesDbAdapter.java	/^public class FilesDbAdapter {$/;"	c
+Flag	src/com/wizarm/android/home/CSurfaceView.java	/^	int Flag=0;$/;"	f	class:CSurfaceView
+HideGrid	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class HideGrid implements Animation.AnimationListener {$/;"	c	class:WizarmAIOTV
+HideOverlayapp	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void HideOverlayapp() {$/;"	m	class:WizarmAIOTV	file:
+ICON	src/com/wizarm/android/home/FilesAdapter.java	/^		public int ICON;$/;"	f	class:FilesAdapter.FileItem
+KEY_ICON	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String KEY_ICON = "icon";$/;"	f	class:FilesDbAdapter
+KEY_MIME	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String KEY_MIME = "mime";$/;"	f	class:FilesDbAdapter
+KEY_PATH	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String KEY_PATH = "path";$/;"	f	class:FilesDbAdapter
+KEY_ROWID	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String KEY_ROWID = "_id";$/;"	f	class:FilesDbAdapter
+KEY_SAVE_GRID_OPENED	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String KEY_SAVE_GRID_OPENED = "grid.opened";$/;"	f	class:WizarmAIOTV	file:
+KEY_TITLE	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String KEY_TITLE = "title";$/;"	f	class:FilesDbAdapter
+LOCAL_MODULE_TAGS	Android.mk	/^LOCAL_MODULE_TAGS := samples$/;"	m
+LOCAL_PACKAGE_NAME	Android.mk	/^LOCAL_PACKAGE_NAME := Home$/;"	m
+LOCAL_PATH	Android.mk	/^LOCAL_PATH:= $(call my-dir)$/;"	m
+LOCAL_SDK_VERSION	Android.mk	/^LOCAL_SDK_VERSION := current$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := $(call all-subdir-java-files)$/;"	m
+LOG_TAG	src/com/wizarm/android/home/CSurfaceView.java	/^	private static final String LOG_TAG = "WizarmTV";$/;"	f	class:CSurfaceView	file:
+LOG_TAG	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^private static final String LOG_TAG = "WizarmTV";$/;"	f	class:OverlaySettingApplicationsStack	file:
+LOG_TAG	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String LOG_TAG = "WizarmTV";$/;"	f	class:WizarmAIOTV	file:
+MAX_RECENT_TASKS	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final int MAX_RECENT_TASKS = 20;$/;"	f	class:WizarmAIOTV	file:
+MENU_SEARCH	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final int MENU_SEARCH = MENU_WALLPAPER_SETTINGS + 1;$/;"	f	class:WizarmAIOTV	file:
+MENU_SETTINGS	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final int MENU_SETTINGS = MENU_SEARCH + 1;$/;"	f	class:WizarmAIOTV	file:
+MENU_WALLPAPER_SETTINGS	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final int MENU_WALLPAPER_SETTINGS = Menu.FIRST + 1;$/;"	f	class:WizarmAIOTV	file:
+MyDragShadowBuilder	src/com/wizarm/android/home/TitlesFragment.java	/^        public MyDragShadowBuilder(View v) {$/;"	m	class:TitlesFragment.MyDragShadowBuilder
+MyDragShadowBuilder	src/com/wizarm/android/home/TitlesFragment.java	/^    private class MyDragShadowBuilder extends View.DragShadowBuilder {$/;"	c	class:TitlesFragment
+MySQLiteHelper	src/com/wizarm/android/home/MySQLiteHelper.java	/^MySQLiteHelper(Context context){$/;"	m	class:MySQLiteHelper
+MySQLiteHelper	src/com/wizarm/android/home/MySQLiteHelper.java	/^public class MySQLiteHelper extends SQLiteOpenHelper {$/;"	c
+NAME	src/com/wizarm/android/home/FilesAdapter.java	/^		public String NAME;$/;"	f	class:FilesAdapter.FileItem
+OApplicationsStack	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private OverlaySettingApplicationsStack OApplicationsStack;$/;"	f	class:WizarmAIOTV	file:
+Ointent	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected Intent Ointent;$/;"	f	class:WizarmAIOTV
+OnItemSelectedListener	src/com/wizarm/android/home/TitlesFragment.java	/^    public interface OnItemSelectedListener {$/;"	i	class:TitlesFragment
+OverlaySettingApplicationsStack	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^public class OverlaySettingApplicationsStack extends Activity implements OnItemClickListener,$/;"	c
+PACKAGE	src/com/wizarm/android/home/FilesAdapter.java	/^		public String PACKAGE;$/;"	f	class:FilesAdapter.FileItem
+R	gen/com/wizarm/android/home/R.java	/^public final class R {$/;"	c
+ReadXML	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private void ReadXML(boolean isLaunching) {$/;"	m
+SerializeXMl	src/com/wizarm/android/home/FilesDbAdapter.java	/^void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,String func,String Title) throws IllegalArgumentException, IllegalStateException, IOException$/;"	m
+ShowApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class ShowApplications implements View.OnClickListener {$/;"	c	class:WizarmAIOTV
+ShowGrid	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private class ShowGrid implements Animation.AnimationListener {$/;"	c	class:WizarmAIOTV
+ShowOverlayapp	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void ShowOverlayapp() {$/;"	m	class:WizarmAIOTV	file:
+TAG	src/com/wizarm/android/home/CreateODialogFragment.java	/^private static final String TAG = "WizarmTV";$/;"	f	class:CreateODialogFragment	file:
+TAG	src/com/wizarm/android/home/FilesAdapter.java	/^	private static final String TAG = "FilesAdapter";$/;"	f	class:FilesAdapter	file:
+TAG	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG = "FilesDbAdapter";$/;"	f	class:FilesDbAdapter	file:
+TAG	src/com/wizarm/android/home/MySQLiteHelper.java	/^private static final String TAG = "__FDK__";$/;"	f	class:MySQLiteHelper	file:
+TAG_FAVORITE	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG_FAVORITE = "item";$/;"	f	class:FilesDbAdapter	file:
+TAG_FAVORITE	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String TAG_FAVORITE = "item";$/;"	f	class:WizarmAIOTV	file:
+TAG_FAVORITES	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG_FAVORITES = "favorites";$/;"	f	class:FilesDbAdapter	file:
+TAG_FAVORITES	src/com/wizarm/android/home/MySQLiteHelper.java	/^private static final String TAG_FAVORITES = "favorites";$/;"	f	class:MySQLiteHelper	file:
+TAG_FAVORITES	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String TAG_FAVORITES = "favorites";$/;"	f	class:WizarmAIOTV	file:
+TAG_FUNC	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG_FUNC = "funccase";$/;"	f	class:FilesDbAdapter	file:
+TAG_FUNC	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String TAG_FUNC = "funccase";    $/;"	f	class:WizarmAIOTV	file:
+TAG_ICON	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG_ICON = "icon";$/;"	f	class:FilesDbAdapter	file:
+TAG_ICON	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String TAG_ICON = "icon";$/;"	f	class:WizarmAIOTV	file:
+TAG_PACKAGE	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static final String TAG_PACKAGE = "package";$/;"	f	class:FilesDbAdapter	file:
+TAG_PACKAGE	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static final String TAG_PACKAGE = "package";$/;"	f	class:WizarmAIOTV	file:
+TAG_TITLE	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public static final String  TAG_TITLE = "title";$/;"	f	class:FilesDbAdapter
+Theme	gen/com/wizarm/android/home/R.java	/^        public static final int Theme=0x7f070000;$/;"	f	class:R.style
+Theme_Transparent	gen/com/wizarm/android/home/R.java	/^        public static final int Theme_Transparent=0x7f070001;$/;"	f	class:R.style
+TitlesFragment	src/com/wizarm/android/home/TitlesFragment.java	/^public class TitlesFragment extends ListFragment implements ActionBar.TabListener {$/;"	c
+WizarmAIOTV	src/com/wizarm/android/home/WizarmAIOTV.java	/^public class WizarmAIOTV extends Activity {$/;"	c
+XMLformat	src/com/wizarm/android/home/WizarmAIOTV.java	/^	public XMLformat(String id,String icon,String pack,String funcase)$/;"	m	class:WizarmAIOTV.XMLformat
+XMLformat	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public static class XMLformat {$/;"	c	class:WizarmAIOTV
+_ID	src/com/wizarm/android/home/FilesAdapter.java	/^		public long _ID;$/;"	f	class:FilesAdapter.FileItem
+addItem	src/com/wizarm/android/home/FilesAdapter.java	/^	public Boolean addItem(String name, String path, int icon, String mime) {$/;"	m	class:FilesAdapter
+afragment	gen/com/wizarm/android/home/R.java	/^        public static final int afragment=0x7f030000;$/;"	f	class:R.layout
+all_applications	gen/com/wizarm/android/home/R.java	/^        public static final int all_applications=0x7f020000;$/;"	f	class:R.drawable
+all_applications_background	gen/com/wizarm/android/home/R.java	/^        public static final int all_applications_background=0x7f020001;$/;"	f	class:R.drawable
+all_applications_button_background	gen/com/wizarm/android/home/R.java	/^        public static final int all_applications_button_background=0x7f020002;$/;"	f	class:R.drawable
+all_applications_label_background	gen/com/wizarm/android/home/R.java	/^        public static final int all_applications_label_background=0x7f020003;$/;"	f	class:R.drawable
+all_apps	gen/com/wizarm/android/home/R.java	/^        public static final int all_apps=0x7f05000b;$/;"	f	class:R.id
+anim	gen/com/wizarm/android/home/R.java	/^    public static final class anim {$/;"	c	class:R
+application	gen/com/wizarm/android/home/R.java	/^        public static final int application=0x7f030001;$/;"	f	class:R.layout
+application_background	gen/com/wizarm/android/home/R.java	/^        public static final int application_background=0x7f020004;$/;"	f	class:R.drawable
+application_background_static	gen/com/wizarm/android/home/R.java	/^        public static final int application_background_static=0x7f020005;$/;"	f	class:R.drawable
+application_backgroundfull	gen/com/wizarm/android/home/R.java	/^        public static final int application_backgroundfull=0x7f020006;$/;"	f	class:R.drawable
+attr	gen/com/wizarm/android/home/R.java	/^    public static final class attr {$/;"	c	class:R
+beginDocument	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static void beginDocument(XmlPullParser parser, String firstElementName)$/;"	m
+bfragment	gen/com/wizarm/android/home/R.java	/^        public static final int bfragment=0x7f030002;$/;"	f	class:R.layout
+bg_android	gen/com/wizarm/android/home/R.java	/^        public static final int bg_android=0x7f020007;$/;"	f	class:R.drawable
+bg_android_icon	gen/com/wizarm/android/home/R.java	/^        public static final int bg_android_icon=0x7f020008;$/;"	f	class:R.drawable
+bg_sunrise	gen/com/wizarm/android/home/R.java	/^        public static final int bg_sunrise=0x7f020009;$/;"	f	class:R.drawable
+bg_sunrise_icon	gen/com/wizarm/android/home/R.java	/^        public static final int bg_sunrise_icon=0x7f02000a;$/;"	f	class:R.drawable
+bg_sunset	gen/com/wizarm/android/home/R.java	/^        public static final int bg_sunset=0x7f02000b;$/;"	f	class:R.drawable
+bg_sunset_icon	gen/com/wizarm/android/home/R.java	/^        public static final int bg_sunset_icon=0x7f02000c;$/;"	f	class:R.drawable
+bindApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void bindApplications() {$/;"	m	class:WizarmAIOTV	file:
+bindButtons	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void bindButtons() {$/;"	m	class:WizarmAIOTV	file:
+bindRecents	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void bindRecents() {$/;"	m	class:WizarmAIOTV	file:
+bright_text_dark_focused	gen/com/wizarm/android/home/R.java	/^        public static final int bright_text_dark_focused=0x7f080000;$/;"	f	class:R.color
+buttonEmpty	gen/com/wizarm/android/home/R.java	/^        public static final int buttonEmpty=0x7f050012;$/;"	f	class:R.id
+cameraInfo	src/com/wizarm/android/home/CSurfaceView.java	/^	CameraInfo cameraInfo = new CameraInfo();$/;"	f	class:CSurfaceView
+checkNumberofCameras	src/com/wizarm/android/home/CSurfaceView.java	/^	public int checkNumberofCameras(){$/;"	m	class:CSurfaceView
+close	src/com/wizarm/android/home/FilesAdapter.java	/^	public void close() {$/;"	m	class:FilesAdapter
+close	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public void close() {$/;"	m	class:FilesDbAdapter
+color	gen/com/wizarm/android/home/R.java	/^    public static final class color {$/;"	c	class:R
+com.wizarm.android.home	gen/com/wizarm/android/home/BuildConfig.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	gen/com/wizarm/android/home/R.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/AFragment.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/ApplicationInfo.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/BFragment.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/CSurfaceView.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/ContentFragment.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/CreateODialogFragment.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/FilesAdapter.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/FilesDbAdapter.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/MySQLiteHelper.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/TitlesFragment.java	/^package com.wizarm.android.home;$/;"	p
+com.wizarm.android.home	src/com/wizarm/android/home/WizarmAIOTV.java	/^package com.wizarm.android.home;$/;"	p
+content_welcome	gen/com/wizarm/android/home/R.java	/^        public static final int content_welcome=0x7f030003;$/;"	f	class:R.layout
+createFile	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public long createFile(String title, String path, int icon, String mime) {$/;"	m	class:FilesDbAdapter
+csurface	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private CSurfaceView csurface=null;$/;"	f	class:WizarmAIOTV	file:
+dbAdapter	src/com/wizarm/android/home/FilesAdapter.java	/^	private FilesDbAdapter dbAdapter;$/;"	f	class:FilesAdapter	file:
+deleteFile	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public boolean deleteFile(long rowId) {$/;"	m	class:FilesDbAdapter
+dispatchKeyEvent	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public boolean dispatchKeyEvent(KeyEvent event) {$/;"	m	class:WizarmAIOTV
+drawNosignal	src/com/wizarm/android/home/CSurfaceView.java	/^	public void drawNosignal() {        $/;"	m	class:CSurfaceView
+drawable	gen/com/wizarm/android/home/R.java	/^    public static final class drawable {$/;"	c	class:R
+equals	src/com/wizarm/android/home/ApplicationInfo.java	/^    public boolean equals(Object o) {$/;"	m	class:ApplicationInfo
+fade_in	gen/com/wizarm/android/home/R.java	/^        public static final int fade_in=0x7f040000;$/;"	f	class:R.anim
+fade_out	gen/com/wizarm/android/home/R.java	/^        public static final int fade_out=0x7f040001;$/;"	f	class:R.anim
+favFile	src/com/wizarm/android/home/FilesDbAdapter.java	/^    final File favFile;$/;"	f	class:FilesDbAdapter
+favReader	src/com/wizarm/android/home/FilesDbAdapter.java	/^    FileReader favReader;$/;"	f	class:FilesDbAdapter
+faves_and_recents	gen/com/wizarm/android/home/R.java	/^        public static final int faves_and_recents=0x7f05000f;$/;"	f	class:R.id
+favorite	gen/com/wizarm/android/home/R.java	/^        public static final int favorite=0x7f030004;$/;"	f	class:R.layout
+favorite_background	gen/com/wizarm/android/home/R.java	/^        public static final int favorite_background=0x7f02000d;$/;"	f	class:R.drawable
+fetchAllFiles	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public Cursor fetchAllFiles() {$/;"	m	class:FilesDbAdapter
+files	src/com/wizarm/android/home/FilesAdapter.java	/^	private List<FileItem> files;$/;"	f	class:FilesAdapter	file:
+filesAdapter	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^private FilesAdapter filesAdapter;	$/;"	f	class:OverlaySettingApplicationsStack	file:
+filtered	src/com/wizarm/android/home/ApplicationInfo.java	/^    boolean filtered; $/;"	f	class:ApplicationInfo
+focused_application_background_static	gen/com/wizarm/android/home/R.java	/^        public static final int focused_application_background_static=0x7f02000e;$/;"	f	class:R.drawable
+funcase	src/com/wizarm/android/home/WizarmAIOTV.java	/^    	String funcase;$/;"	f	class:WizarmAIOTV.XMLformat
+funccase	src/com/wizarm/android/home/ApplicationInfo.java	/^    int funccase=0;$/;"	f	class:ApplicationInfo
+gallery	gen/com/wizarm/android/home/R.java	/^        public static final int gallery=0x7f050017;$/;"	f	class:R.id
+gesture	src/com/wizarm/android/home/CSurfaceView.java	/^	private GestureDetector gesture=null;$/;"	f	class:CSurfaceView	file:
+getApplicationInfo	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static ApplicationInfo getApplicationInfo(PackageManager manager, Intent intent) {$/;"	m	class:WizarmAIOTV	file:
+getCount	src/com/wizarm/android/home/FilesAdapter.java	/^	public int getCount() {$/;"	m	class:FilesAdapter
+getItem	src/com/wizarm/android/home/FilesAdapter.java	/^	public Object getItem(int position) {$/;"	m	class:FilesAdapter
+getItemId	src/com/wizarm/android/home/FilesAdapter.java	/^	public long getItemId(int position) {$/;"	m	class:FilesAdapter
+getView	src/com/wizarm/android/home/FilesAdapter.java	/^	public View getView(int position, View convertView, ViewGroup parent) {$/;"	m	class:FilesAdapter
+getView	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public View getView(int position, View convertView, ViewGroup parent) {$/;"	m	class:WizarmAIOTV.ApplicationsAdapter
+grid_entry	gen/com/wizarm/android/home/R.java	/^        public static final int grid_entry=0x7f040002;$/;"	f	class:R.anim
+grid_exit	gen/com/wizarm/android/home/R.java	/^        public static final int grid_exit=0x7f040003;$/;"	f	class:R.anim
+grid_item	gen/com/wizarm/android/home/R.java	/^        public static final int grid_item=0x7f030005;$/;"	f	class:R.layout
+grid_item_icon	gen/com/wizarm/android/home/R.java	/^        public static final int grid_item_icon=0x7f050006;$/;"	f	class:R.id
+grid_item_text	gen/com/wizarm/android/home/R.java	/^        public static final int grid_item_text=0x7f050007;$/;"	f	class:R.id
+grid_selector	gen/com/wizarm/android/home/R.java	/^        public static final int grid_selector=0x7f02000f;$/;"	f	class:R.drawable
+gridview	gen/com/wizarm/android/home/R.java	/^        public static final int gridview=0x7f050011;$/;"	f	class:R.id
+hashCode	src/com/wizarm/android/home/ApplicationInfo.java	/^    public int hashCode() {$/;"	m	class:ApplicationInfo
+hideApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void hideApplications() {$/;"	m	class:WizarmAIOTV	file:
+hide_all_applications	gen/com/wizarm/android/home/R.java	/^        public static final int hide_all_applications=0x7f020010;$/;"	f	class:R.drawable
+hide_applications	gen/com/wizarm/android/home/R.java	/^        public static final int hide_applications=0x7f040004;$/;"	f	class:R.anim
+home	gen/com/wizarm/android/home/R.java	/^        public static final int home=0x7f030006;$/;"	f	class:R.layout
+home_title	gen/com/wizarm/android/home/R.java	/^        public static final int home_title=0x7f060000;$/;"	f	class:R.string
+homebk	gen/com/wizarm/android/home/R.java	/^        public static final int homebk=0x7f030007;$/;"	f	class:R.layout
+horizontal	gen/com/wizarm/android/home/R.java	/^        public static final int horizontal=0x7f050000;$/;"	f	class:R.id
+ic_action_add	gen/com/wizarm/android/home/R.java	/^        public static final int ic_action_add=0x7f020011;$/;"	f	class:R.drawable
+ic_launcher_allhide	gen/com/wizarm/android/home/R.java	/^        public static final int ic_launcher_allhide=0x7f020012;$/;"	f	class:R.drawable
+ic_launcher_allshow	gen/com/wizarm/android/home/R.java	/^        public static final int ic_launcher_allshow=0x7f020013;$/;"	f	class:R.drawable
+ic_launcher_home	gen/com/wizarm/android/home/R.java	/^        public static final int ic_launcher_home=0x7f020014;$/;"	f	class:R.drawable
+icon	src/com/wizarm/android/home/ApplicationInfo.java	/^    Drawable icon;$/;"	f	class:ApplicationInfo
+icon	src/com/wizarm/android/home/WizarmAIOTV.java	/^    	String icon;$/;"	f	class:WizarmAIOTV.XMLformat
+icon_android	gen/com/wizarm/android/home/R.java	/^        public static final int icon_android=0x7f020015;$/;"	f	class:R.drawable
+icon_demo	gen/com/wizarm/android/home/R.java	/^        public static final int icon_demo=0x7f020016;$/;"	f	class:R.drawable
+icon_firefox	gen/com/wizarm/android/home/R.java	/^        public static final int icon_firefox=0x7f020017;$/;"	f	class:R.drawable
+icon_osettings	gen/com/wizarm/android/home/R.java	/^        public static final int icon_osettings=0x7f020018;$/;"	f	class:R.drawable
+icon_scale	gen/com/wizarm/android/home/R.java	/^        public static final int icon_scale=0x7f020019;$/;"	f	class:R.drawable
+icon_usettings	gen/com/wizarm/android/home/R.java	/^        public static final int icon_usettings=0x7f02001a;$/;"	f	class:R.drawable
+icon_watch	gen/com/wizarm/android/home/R.java	/^        public static final int icon_watch=0x7f02001b;$/;"	f	class:R.drawable
+icon_xbmc	gen/com/wizarm/android/home/R.java	/^        public static final int icon_xbmc=0x7f02001c;$/;"	f	class:R.drawable
+iconandroid	gen/com/wizarm/android/home/R.java	/^        public static final int iconandroid=0x7f02001d;$/;"	f	class:R.drawable
+iconchat	gen/com/wizarm/android/home/R.java	/^        public static final int iconchat=0x7f02001e;$/;"	f	class:R.drawable
+iconchatover	gen/com/wizarm/android/home/R.java	/^        public static final int iconchatover=0x7f02001f;$/;"	f	class:R.drawable
+iconcloud	gen/com/wizarm/android/home/R.java	/^        public static final int iconcloud=0x7f020020;$/;"	f	class:R.drawable
+iconcloudover	gen/com/wizarm/android/home/R.java	/^        public static final int iconcloudover=0x7f020021;$/;"	f	class:R.drawable
+iconfirefox	gen/com/wizarm/android/home/R.java	/^        public static final int iconfirefox=0x7f020022;$/;"	f	class:R.drawable
+iconm	gen/com/wizarm/android/home/R.java	/^        public static final int iconm=0x7f020023;$/;"	f	class:R.drawable
+iconmail	gen/com/wizarm/android/home/R.java	/^        public static final int iconmail=0x7f020024;$/;"	f	class:R.drawable
+iconmailover	gen/com/wizarm/android/home/R.java	/^        public static final int iconmailover=0x7f020025;$/;"	f	class:R.drawable
+iconmover	gen/com/wizarm/android/home/R.java	/^        public static final int iconmover=0x7f020026;$/;"	f	class:R.drawable
+iconplay	gen/com/wizarm/android/home/R.java	/^        public static final int iconplay=0x7f020027;$/;"	f	class:R.drawable
+iconplayover	gen/com/wizarm/android/home/R.java	/^        public static final int iconplayover=0x7f020028;$/;"	f	class:R.drawable
+iconradio	gen/com/wizarm/android/home/R.java	/^        public static final int iconradio=0x7f020029;$/;"	f	class:R.drawable
+iconradioover	gen/com/wizarm/android/home/R.java	/^        public static final int iconradioover=0x7f02002a;$/;"	f	class:R.drawable
+iconscale	gen/com/wizarm/android/home/R.java	/^        public static final int iconscale=0x7f02002b;$/;"	f	class:R.drawable
+iconscaleover	gen/com/wizarm/android/home/R.java	/^        public static final int iconscaleover=0x7f02002c;$/;"	f	class:R.drawable
+iconsetting	gen/com/wizarm/android/home/R.java	/^        public static final int iconsetting=0x7f02002d;$/;"	f	class:R.drawable
+iconsettingover	gen/com/wizarm/android/home/R.java	/^        public static final int iconsettingover=0x7f02002e;$/;"	f	class:R.drawable
+iconskype	gen/com/wizarm/android/home/R.java	/^        public static final int iconskype=0x7f02002f;$/;"	f	class:R.drawable
+iconskypeover	gen/com/wizarm/android/home/R.java	/^        public static final int iconskypeover=0x7f020030;$/;"	f	class:R.drawable
+iconstorage	gen/com/wizarm/android/home/R.java	/^        public static final int iconstorage=0x7f020031;$/;"	f	class:R.drawable
+iconstorageover	gen/com/wizarm/android/home/R.java	/^        public static final int iconstorageover=0x7f020032;$/;"	f	class:R.drawable
+id	gen/com/wizarm/android/home/R.java	/^    public static final class id {$/;"	c	class:R
+id	src/com/wizarm/android/home/WizarmAIOTV.java	/^    	String id;$/;"	f	class:WizarmAIOTV.XMLformat
+image	gen/com/wizarm/android/home/R.java	/^        public static final int image=0x7f050005;$/;"	f	class:R.id
+intent	src/com/wizarm/android/home/ApplicationInfo.java	/^    Intent intent;$/;"	f	class:ApplicationInfo
+label	gen/com/wizarm/android/home/R.java	/^        public static final int label=0x7f050003;$/;"	f	class:R.id
+layout	gen/com/wizarm/android/home/R.java	/^    public static final class layout {$/;"	c	class:R
+layoutListener	src/com/wizarm/android/home/TitlesFragment.java	/^    ViewTreeObserver.OnGlobalLayoutListener layoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {$/;"	f	class:TitlesFragment
+li	src/com/wizarm/android/home/FilesAdapter.java	/^	private LayoutInflater li;$/;"	f	class:FilesAdapter	file:
+loadApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void loadApplications(boolean isLaunching) {$/;"	m	class:WizarmAIOTV	file:
+mApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static ArrayList<ApplicationInfo> mApplications;$/;"	f	class:WizarmAIOTV	file:
+mApplicationsReceiver	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private final BroadcastReceiver mApplicationsReceiver = new ApplicationsIntentReceiver();$/;"	f	class:WizarmAIOTV	file:
+mBackDown	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private boolean mBackDown;$/;"	f	class:WizarmAIOTV	file:
+mBitmap	src/com/wizarm/android/home/ContentFragment.java	/^    private Bitmap mBitmap = null;$/;"	f	class:ContentFragment	file:
+mBlockAnimation	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private boolean mBlockAnimation;$/;"	f	class:WizarmAIOTV	file:
+mCamera	src/com/wizarm/android/home/CSurfaceView.java	/^	public Camera mCamera=null;$/;"	f	class:CSurfaceView
+mCamera	src/com/wizarm/android/home/WizarmAIOTV.java	/^	public Camera mCamera;$/;"	f	class:WizarmAIOTV
+mCameraCurrentlyLocked	src/com/wizarm/android/home/WizarmAIOTV.java	/^    int mCameraCurrentlyLocked;  \/\/ Camera ID that's actually acquired$/;"	f	class:WizarmAIOTV
+mCameraDisabled	src/com/wizarm/android/home/CSurfaceView.java	/^   	protected boolean mCameraDisabled;$/;"	f	class:CSurfaceView
+mCategory	src/com/wizarm/android/home/ContentFragment.java	/^    private int mCategory = 0;$/;"	f	class:ContentFragment	file:
+mCategory	src/com/wizarm/android/home/TitlesFragment.java	/^    private int mCategory = 0;$/;"	f	class:TitlesFragment	file:
+mContentSelectionActionModeCallback	src/com/wizarm/android/home/ContentFragment.java	/^    private ActionMode.Callback mContentSelectionActionModeCallback = new ActionMode.Callback() {$/;"	f	class:ContentFragment	file:
+mContentView	src/com/wizarm/android/home/ContentFragment.java	/^    private View mContentView;$/;"	f	class:ContentFragment	file:
+mContext	src/com/wizarm/android/home/MySQLiteHelper.java	/^private final Context mContext;$/;"	f	class:MySQLiteHelper	file:
+mCtx	src/com/wizarm/android/home/FilesAdapter.java	/^	private final Context mCtx;$/;"	f	class:FilesAdapter	file:
+mCtx	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private final Context mCtx;$/;"	f	class:FilesDbAdapter	file:
+mCurPosition	src/com/wizarm/android/home/ContentFragment.java	/^    private int mCurPosition = 0;$/;"	f	class:ContentFragment	file:
+mCurPosition	src/com/wizarm/android/home/TitlesFragment.java	/^    private int mCurPosition = 0;$/;"	f	class:TitlesFragment	file:
+mCurrentActionMode	src/com/wizarm/android/home/ContentFragment.java	/^    private ActionMode mCurrentActionMode;$/;"	f	class:ContentFragment	file:
+mCurrentCamera	src/com/wizarm/android/home/CSurfaceView.java	/^	int mCurrentCamera = 0;$/;"	f	class:CSurfaceView
+mCurrentCamera	src/com/wizarm/android/home/WizarmAIOTV.java	/^   	int mCurrentCamera;  \/\/ Camera ID currently chosen$/;"	f	class:WizarmAIOTV
+mCursor	src/com/wizarm/android/home/FilesDbAdapter.java	/^        Cursor mCursor =$/;"	f	class:FilesDbAdapter
+mDefaultCameraId	src/com/wizarm/android/home/WizarmAIOTV.java	/^	int mDefaultCameraId;$/;"	f	class:WizarmAIOTV
+mDualFragments	src/com/wizarm/android/home/TitlesFragment.java	/^    private boolean mDualFragments = false;$/;"	f	class:TitlesFragment	file:
+mFavorites	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static LinkedList<ApplicationInfo> mFavorites;$/;"	f	class:WizarmAIOTV	file:
+mGrid	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private GridView mGrid;$/;"	f	class:WizarmAIOTV	file:
+mGridEntry	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private Animation mGridEntry;$/;"	f	class:WizarmAIOTV	file:
+mGridExit	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private Animation mGridExit;$/;"	f	class:WizarmAIOTV	file:
+mHideLayoutAnimation	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private LayoutAnimationController mHideLayoutAnimation;$/;"	f	class:WizarmAIOTV	file:
+mHomeDown	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private boolean mHomeDown;$/;"	f	class:WizarmAIOTV	file:
+mListener	src/com/wizarm/android/home/TitlesFragment.java	/^    OnItemSelectedListener mListener;$/;"	f	class:TitlesFragment
+mNumberOfCameras	src/com/wizarm/android/home/WizarmAIOTV.java	/^	int mNumberOfCameras;$/;"	f	class:WizarmAIOTV
+mOldBounds	src/com/wizarm/android/home/WizarmAIOTV.java	/^        private Rect mOldBounds = new Rect();$/;"	f	class:WizarmAIOTV.ApplicationsAdapter	file:
+mOpenCameraFail	src/com/wizarm/android/home/CSurfaceView.java	/^	protected boolean mOpenCameraFail;$/;"	f	class:CSurfaceView
+mShadow	src/com/wizarm/android/home/TitlesFragment.java	/^        private Drawable mShadow;$/;"	f	class:TitlesFragment.MyDragShadowBuilder	file:
+mShowApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private View mShowApplications;$/;"	f	class:WizarmAIOTV	file:
+mShowApplicationsCheck	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private CheckBox mShowApplicationsCheck;$/;"	f	class:WizarmAIOTV	file:
+mShowLayoutAnimation	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private LayoutAnimationController mShowLayoutAnimation;$/;"	f	class:WizarmAIOTV	file:
+mSoloFragment	src/com/wizarm/android/home/ContentFragment.java	/^    private boolean mSoloFragment = false;$/;"	f	class:ContentFragment	file:
+mSystemUiVisible	src/com/wizarm/android/home/ContentFragment.java	/^    private boolean mSystemUiVisible = true;$/;"	f	class:ContentFragment	file:
+mWallpaperChecked	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private static boolean mWallpaperChecked;$/;"	f	class:WizarmAIOTV	file:
+main	gen/com/wizarm/android/home/R.java	/^        public static final int main=0x7f050010;$/;"	f	class:R.id
+main	gen/com/wizarm/android/home/R.java	/^        public static final int main=0x7f090000;$/;"	f	class:R.menu
+main	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private LinearLayout main; $/;"	f	class:WizarmAIOTV	file:
+mainLayout	gen/com/wizarm/android/home/R.java	/^        public static final int mainLayout=0x7f050008;$/;"	f	class:R.id
+mainLayoutsecond	gen/com/wizarm/android/home/R.java	/^        public static final int mainLayoutsecond=0x7f050015;$/;"	f	class:R.id
+mainLayoutthird	gen/com/wizarm/android/home/R.java	/^        public static final int mainLayoutthird=0x7f050013;$/;"	f	class:R.id
+mainbut	gen/com/wizarm/android/home/R.java	/^        public static final int mainbut=0x7f050014;$/;"	f	class:R.id
+marginBottom	gen/com/wizarm/android/home/R.java	/^        public static final int marginBottom=0x7f010004;$/;"	f	class:R.attr
+marginLeft	gen/com/wizarm/android/home/R.java	/^        public static final int marginLeft=0x7f010001;$/;"	f	class:R.attr
+marginRight	gen/com/wizarm/android/home/R.java	/^        public static final int marginRight=0x7f010003;$/;"	f	class:R.attr
+marginTop	gen/com/wizarm/android/home/R.java	/^        public static final int marginTop=0x7f010002;$/;"	f	class:R.attr
+menu	gen/com/wizarm/android/home/R.java	/^    public static final class menu {$/;"	c	class:R
+menu_about	gen/com/wizarm/android/home/R.java	/^        public static final int menu_about=0x7f060009;$/;"	f	class:R.string
+menu_add	gen/com/wizarm/android/home/R.java	/^        public static final int menu_add=0x7f060006;$/;"	f	class:R.string
+menu_feedback	gen/com/wizarm/android/home/R.java	/^        public static final int menu_feedback=0x7f060008;$/;"	f	class:R.string
+menu_quit	gen/com/wizarm/android/home/R.java	/^        public static final int menu_quit=0x7f060007;$/;"	f	class:R.string
+menu_search	gen/com/wizarm/android/home/R.java	/^        public static final int menu_search=0x7f060003;$/;"	f	class:R.string
+menu_settings	gen/com/wizarm/android/home/R.java	/^        public static final int menu_settings=0x7f060004;$/;"	f	class:R.string
+menu_share	gen/com/wizarm/android/home/R.java	/^        public static final int menu_share=0x7f06000a;$/;"	f	class:R.string
+menu_wallpaper	gen/com/wizarm/android/home/R.java	/^        public static final int menu_wallpaper=0x7f060002;$/;"	f	class:R.string
+menuitem_about	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_about=0x7f05001c;$/;"	f	class:R.id
+menuitem_add	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_add=0x7f050019;$/;"	f	class:R.id
+menuitem_feedback	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_feedback=0x7f05001b;$/;"	f	class:R.id
+menuitem_quit	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_quit=0x7f05001d;$/;"	f	class:R.id
+menuitem_search	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_search=0x7f050018;$/;"	f	class:R.id
+menuitem_share	gen/com/wizarm/android/home/R.java	/^        public static final int menuitem_share=0x7f05001a;$/;"	f	class:R.id
+newHeight	src/com/wizarm/android/home/CSurfaceView.java	/^	int newHeight;$/;"	f	class:CSurfaceView
+newWidth	src/com/wizarm/android/home/CSurfaceView.java	/^	int newWidth ;$/;"	f	class:CSurfaceView
+nextElement	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private static void nextElement(XmlPullParser parser) throws XmlPullParserException, IOException {$/;"	m
+nosignal	gen/com/wizarm/android/home/R.java	/^        public static final int nosignal=0x7f020033;$/;"	f	class:R.drawable
+onActivityCreated	src/com/wizarm/android/home/ContentFragment.java	/^    public void onActivityCreated(Bundle savedInstanceState) {$/;"	m	class:ContentFragment
+onActivityCreated	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onActivityCreated(Bundle savedInstanceState) {$/;"	m	class:TitlesFragment
+onActivityResult	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public void onActivityResult(int requestCode, int resultCode,$/;"	m	class:WizarmAIOTV
+onAnimationEnd	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationEnd(Animation animation) {$/;"	m	class:WizarmAIOTV.HideGrid
+onAnimationEnd	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationEnd(Animation animation) {$/;"	m	class:WizarmAIOTV.ShowGrid
+onAnimationRepeat	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationRepeat(Animation animation) {$/;"	m	class:WizarmAIOTV.HideGrid
+onAnimationRepeat	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationRepeat(Animation animation) {$/;"	m	class:WizarmAIOTV.ShowGrid
+onAnimationStart	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationStart(Animation animation) {$/;"	m	class:WizarmAIOTV.HideGrid
+onAnimationStart	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onAnimationStart(Animation animation) {$/;"	m	class:WizarmAIOTV.ShowGrid
+onAttach	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onAttach(Activity activity) {$/;"	m	class:TitlesFragment
+onClick	src/com/wizarm/android/home/CreateODialogFragment.java	/^public void onClick(DialogInterface arg0, int arg1) {$/;"	m	class:CreateODialogFragment
+onClick	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onClick(View v) {$/;"	m	class:WizarmAIOTV.ShowApplications
+onCreate	src/com/wizarm/android/home/MySQLiteHelper.java	/^ public void onCreate(SQLiteDatabase db) {$/;"	m	class:MySQLiteHelper
+onCreate	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^  public void onCreate(Bundle icicle) {$/;"	m	class:OverlaySettingApplicationsStack
+onCreate	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public void onCreate(Bundle icicle) {$/;"	m	class:WizarmAIOTV
+onCreateDialog	src/com/wizarm/android/home/CreateODialogFragment.java	/^public Dialog onCreateDialog(Bundle savedInstanceState) {$/;"	m	class:CreateODialogFragment
+onCreateOptionsMenu	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public boolean onCreateOptionsMenu(Menu menu) {$/;"	m	class:WizarmAIOTV
+onCreateView	src/com/wizarm/android/home/AFragment.java	/^    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {$/;"	m	class:AFragment
+onCreateView	src/com/wizarm/android/home/BFragment.java	/^    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {$/;"	m	class:BFragment
+onCreateView	src/com/wizarm/android/home/ContentFragment.java	/^    public View onCreateView(LayoutInflater inflater, ViewGroup container,$/;"	m	class:ContentFragment
+onCreateView	src/com/wizarm/android/home/CreateODialogFragment.java	/^ public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState)$/;"	m	class:CreateODialogFragment
+onDestroy	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public void onDestroy() {$/;"	m	class:WizarmAIOTV
+onDestroyView	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onDestroyView() {$/;"	m	class:TitlesFragment
+onDraw	src/com/wizarm/android/home/CSurfaceView.java	/^	public void onDraw(Canvas canvas) {$/;"	m	class:CSurfaceView
+onDrawShadow	src/com/wizarm/android/home/TitlesFragment.java	/^        public void onDrawShadow(Canvas canvas) {$/;"	m	class:TitlesFragment.MyDragShadowBuilder
+onItemClick	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {$/;"	m	class:OverlaySettingApplicationsStack
+onItemClick	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onItemClick(AdapterView parent, View v, int position, long id) {$/;"	m	class:WizarmAIOTV.ApplicationLauncher
+onItemLongClick	src/com/wizarm/android/home/OverlaySettingApplicationsStack.java	/^public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,$/;"	m	class:OverlaySettingApplicationsStack
+onItemSelected	src/com/wizarm/android/home/TitlesFragment.java	/^        public void onItemSelected(int category, int position);$/;"	m	interface:TitlesFragment.OnItemSelectedListener
+onListItemClick	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onListItemClick(ListView l, View v, int position, long id) {$/;"	m	class:TitlesFragment
+onNewIntent	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected void onNewIntent(Intent intent) {$/;"	m	class:WizarmAIOTV
+onOptionsItemSelected	src/com/wizarm/android/home/ContentFragment.java	/^    public boolean onOptionsItemSelected(MenuItem item) {$/;"	m	class:ContentFragment
+onOptionsItemSelected	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public boolean onOptionsItemSelected(MenuItem item) {$/;"	m	class:WizarmAIOTV
+onPause	src/com/wizarm/android/home/CSurfaceView.java	/^	    public void onPause() {$/;"	m	class:CSurfaceView
+onReceive	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public void onReceive(Context context, Intent intent) {$/;"	m	class:WizarmAIOTV.ApplicationsIntentReceiver
+onRestoreInstanceState	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected void onRestoreInstanceState(Bundle state) {$/;"	m	class:WizarmAIOTV
+onResume	src/com/wizarm/android/home/CSurfaceView.java	/^	    public void onResume() {$/;"	m	class:CSurfaceView
+onResume	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected void onResume() {$/;"	m	class:WizarmAIOTV
+onSaveInstanceState	src/com/wizarm/android/home/ContentFragment.java	/^    public void onSaveInstanceState (Bundle outState) {$/;"	m	class:ContentFragment
+onSaveInstanceState	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onSaveInstanceState (Bundle outState) {$/;"	m	class:TitlesFragment
+onSaveInstanceState	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected void onSaveInstanceState(Bundle outState) {$/;"	m	class:WizarmAIOTV
+onTabReselected	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {$/;"	m	class:TitlesFragment
+onTabSelected	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {$/;"	m	class:TitlesFragment
+onTabUnselected	src/com/wizarm/android/home/TitlesFragment.java	/^    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {$/;"	m	class:TitlesFragment
+onTouchEvent	src/com/wizarm/android/home/WizarmAIOTV.java	/^        public boolean onTouchEvent(MotionEvent event){$/;"	m	class:WizarmAIOTV
+onUpgrade	src/com/wizarm/android/home/MySQLiteHelper.java	/^public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {$/;"	m	class:MySQLiteHelper
+onWindowFocusChanged	src/com/wizarm/android/home/WizarmAIOTV.java	/^    public void onWindowFocusChanged(boolean hasFocus) {$/;"	m	class:WizarmAIOTV
+open	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public FilesDbAdapter open() {$/;"	m	class:FilesDbAdapter
+over	gen/com/wizarm/android/home/R.java	/^        public static final int over=0x7f030008;$/;"	f	class:R.layout
+overlayset	gen/com/wizarm/android/home/R.java	/^        public static final int overlayset=0x7f030009;$/;"	f	class:R.layout
+overlaysetting	gen/com/wizarm/android/home/R.java	/^        public static final int overlaysetting=0x7f03000a;$/;"	f	class:R.layout
+pack	src/com/wizarm/android/home/WizarmAIOTV.java	/^    	String pack;$/;"	f	class:WizarmAIOTV.XMLformat
+populateTitles	src/com/wizarm/android/home/TitlesFragment.java	/^    public void populateTitles(int category) {$/;"	m	class:TitlesFragment
+pressed_application_background_static	gen/com/wizarm/android/home/R.java	/^        public static final int pressed_application_background_static=0x7f020034;$/;"	f	class:R.drawable
+processDragStarted	src/com/wizarm/android/home/ContentFragment.java	/^    boolean processDragStarted(DragEvent event) {$/;"	m	class:ContentFragment
+processDrop	src/com/wizarm/android/home/ContentFragment.java	/^    boolean processDrop(DragEvent event, ImageView imageView) {$/;"	m	class:ContentFragment
+removeItem	src/com/wizarm/android/home/FilesAdapter.java	/^	public Boolean removeItem(int position) {$/;"	m	class:FilesAdapter
+removeShortcut	src/com/wizarm/android/home/FilesAdapter.java	/^	private void removeShortcut(int position) {$/;"	m	class:FilesAdapter	file:
+run	src/com/wizarm/android/home/CSurfaceView.java	/^        public void run() {$/;"	m	class:CSurfaceView.CameraOpenThread
+run	src/com/wizarm/android/home/CSurfaceView.java	/^        public void run() {$/;"	m	class:CSurfaceView.CameraPreviewThread
+scaled	src/com/wizarm/android/home/CSurfaceView.java	/^	Bitmap scaled;$/;"	f	class:CSurfaceView
+selectPosition	src/com/wizarm/android/home/TitlesFragment.java	/^    public void selectPosition(int position) {$/;"	m	class:TitlesFragment
+setActivity	src/com/wizarm/android/home/ApplicationInfo.java	/^    final void setActivity(ComponentName className, int launchFlags) {$/;"	m	class:ApplicationInfo
+setDefaultWallpaper	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void setDefaultWallpaper() {$/;"	m	class:WizarmAIOTV	file:
+setSystemUiVisible	src/com/wizarm/android/home/ContentFragment.java	/^    void setSystemUiVisible(boolean show) {$/;"	m	class:ContentFragment
+setValues	src/com/wizarm/android/home/FilesAdapter.java	/^		public void setValues(String name, int icon, String path,  String shortcut) {$/;"	m	class:FilesAdapter.FileItem
+setdelay	src/com/wizarm/android/home/CSurfaceView.java	/^		public void setdelay(int i) {$/;"	m	class:CSurfaceView.CameraPreviewThread
+settingbutton	gen/com/wizarm/android/home/R.java	/^        public static final int settingbutton=0x7f050016;$/;"	f	class:R.id
+sh_callback	src/com/wizarm/android/home/WizarmAIOTV.java	/^    SurfaceHolder.Callback sh_callback  = null;$/;"	f	class:WizarmAIOTV
+sh_ob	src/com/wizarm/android/home/WizarmAIOTV.java	/^	SurfaceHolder.Callback sh_ob = null;$/;"	f	class:WizarmAIOTV
+shareCurrentPhoto	src/com/wizarm/android/home/ContentFragment.java	/^    void shareCurrentPhoto() {$/;"	m	class:ContentFragment
+sholder	src/com/wizarm/android/home/CSurfaceView.java	/^	SurfaceHolder sholder=null;$/;"	f	class:CSurfaceView
+showApplications	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void showApplications(boolean animate) {$/;"	m	class:WizarmAIOTV	file:
+show_all_applications	gen/com/wizarm/android/home/R.java	/^        public static final int show_all_applications=0x7f020035;$/;"	f	class:R.drawable
+show_all_apps	gen/com/wizarm/android/home/R.java	/^        public static final int show_all_apps=0x7f05000c;$/;"	f	class:R.id
+show_all_apps	gen/com/wizarm/android/home/R.java	/^        public static final int show_all_apps=0x7f060001;$/;"	f	class:R.string
+show_all_apps_check	gen/com/wizarm/android/home/R.java	/^        public static final int show_all_apps_check=0x7f05000e;$/;"	f	class:R.id
+show_applications	gen/com/wizarm/android/home/R.java	/^        public static final int show_applications=0x7f040005;$/;"	f	class:R.anim
+stackOrientation	gen/com/wizarm/android/home/R.java	/^        public static final int stackOrientation=0x7f010000;$/;"	f	class:R.attr
+startWallpaper	src/com/wizarm/android/home/WizarmAIOTV.java	/^    private void startWallpaper() {$/;"	m	class:WizarmAIOTV	file:
+string	gen/com/wizarm/android/home/R.java	/^    public static final class string {$/;"	c	class:R
+style	gen/com/wizarm/android/home/R.java	/^    public static final class style {$/;"	c	class:R
+styleable	gen/com/wizarm/android/home/R.java	/^    public static final class styleable {$/;"	c	class:R
+surface	gen/com/wizarm/android/home/R.java	/^        public static final int surface=0x7f050009;$/;"	f	class:R.id
+surfaceChanged	src/com/wizarm/android/home/CSurfaceView.java	/^	public void surfaceChanged(SurfaceHolder holder, int format, int width,$/;"	m	class:CSurfaceView
+surfaceCreated	src/com/wizarm/android/home/CSurfaceView.java	/^ 	public void surfaceCreated(SurfaceHolder holder) {$/;"	m	class:CSurfaceView
+surfaceDestroyed	src/com/wizarm/android/home/CSurfaceView.java	/^	public void surfaceDestroyed(SurfaceHolder holder) {$/;"	m	class:CSurfaceView
+surface_holder	src/com/wizarm/android/home/WizarmAIOTV.java	/^    SurfaceHolder surface_holder        = null;$/;"	f	class:WizarmAIOTV
+surface_view	src/com/wizarm/android/home/WizarmAIOTV.java	/^	private SurfaceView surface_view;	$/;"	f	class:WizarmAIOTV	file:
+textView1	gen/com/wizarm/android/home/R.java	/^        public static final int textView1=0x7f050002;$/;"	f	class:R.id
+textView2	gen/com/wizarm/android/home/R.java	/^        public static final int textView2=0x7f050004;$/;"	f	class:R.id
+thiscontext	src/com/wizarm/android/home/WizarmAIOTV.java	/^    protected Context thiscontext;$/;"	f	class:WizarmAIOTV
+title	src/com/wizarm/android/home/ApplicationInfo.java	/^    CharSequence title;$/;"	f	class:ApplicationInfo
+title_list_item	gen/com/wizarm/android/home/R.java	/^        public static final int title_list_item=0x7f03000b;$/;"	f	class:R.layout
+updateContentAndRecycleBitmap	src/com/wizarm/android/home/ContentFragment.java	/^    void updateContentAndRecycleBitmap(int category, int position) {$/;"	m	class:ContentFragment
+updateFile	src/com/wizarm/android/home/FilesDbAdapter.java	/^    public boolean updateFile(long rowId, String title, String path, int icon, String mime) {$/;"	m
+vertical	gen/com/wizarm/android/home/R.java	/^        public static final int vertical=0x7f050001;$/;"	f	class:R.id
+wallpaper	gen/com/wizarm/android/home/R.java	/^        public static final int wallpaper=0x7f03000c;$/;"	f	class:R.layout
+wallpaper_instructions	gen/com/wizarm/android/home/R.java	/^        public static final int wallpaper_instructions=0x7f060005;$/;"	f	class:R.string
+wizarmlogo	gen/com/wizarm/android/home/R.java	/^        public static final int wizarmlogo=0x7f020036;$/;"	f	class:R.drawable
+wizarmlogo	gen/com/wizarm/android/home/R.java	/^        public static final int wizarmlogo=0x7f05000d;$/;"	f	class:R.id
+wizarmlogo1	gen/com/wizarm/android/home/R.java	/^        public static final int wizarmlogo1=0x7f020037;$/;"	f	class:R.drawable
+wizarmlogo2	gen/com/wizarm/android/home/R.java	/^        public static final int wizarmlogo2=0x7f020038;$/;"	f	class:R.drawable
+wizarmlogo3	gen/com/wizarm/android/home/R.java	/^        public static final int wizarmlogo3=0x7f020039;$/;"	f	class:R.drawable
+wizhome	gen/com/wizarm/android/home/R.java	/^        public static final int wizhome=0x7f05000a;$/;"	f	class:R.id
+writeXML	src/com/wizarm/android/home/FilesDbAdapter.java	/^    private void writeXML(int nthbutton)\/\/final ApplicationInfo info) $/;"	m
+xbmc	gen/com/wizarm/android/home/R.java	/^        public static final int xbmc=0x7f02003a;$/;"	f	class:R.drawable

@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class FilesAdapter extends BaseAdapter {
 	private static final String TAG = "FilesAdapter";
-	private List<FileItem> files;
+	public List<FileItem> files;
 	private final Context mCtx;
 	
 	private FilesDbAdapter dbAdapter;
@@ -31,30 +31,22 @@ public class FilesAdapter extends BaseAdapter {
 		files = new ArrayList<FileItem>();
 		// Connect to db
 		dbAdapter = new FilesDbAdapter(ctx);
-		dbAdapter.open();
-		
-		Cursor filesCursor = dbAdapter.fetchAllFiles();
-		for (boolean hasItem = filesCursor.moveToFirst(); hasItem; hasItem = filesCursor.moveToNext()) {
-			//int pathColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_PATH);
-			int nameColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_TITLE);
-			int rowIdColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_ROWID);
-			int iconColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_ICON);
-			int pathColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_PATH);
-			int mimeColId = filesCursor.getColumnIndex(FilesDbAdapter.KEY_MIME);
-		    files.add(new FileItem(filesCursor.getInt(rowIdColId), filesCursor.getString(nameColId),
-		    		filesCursor.getInt(iconColId), filesCursor.getString(pathColId),  null));
-		}
+	dbAdapter.Setfiles(files);
+	//	dbAdapter.open();
+
+
 		
 		li =  (LayoutInflater)mCtx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public int getCount() {
-		return files.size();
+		return 5;//files.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
+
 		return files.get(position);
 	}
 
@@ -69,17 +61,24 @@ public class FilesAdapter extends BaseAdapter {
 		if (convertView == null) {
 			itemView = li.inflate(R.layout.grid_item, parent, false);
 		}
-		
+
+/*		
 		TextView text = (TextView)itemView.findViewById(R.id.grid_item_text);
 		text.setText(files.get(position).NAME);
 		ImageView icon = (ImageView)itemView.findViewById(R.id.grid_item_icon);
-		icon.setImageResource(files.get(position).ICON);
+		icon.setImageResource(files.get(position).ICON);*/
+		
+
+		TextView text = (TextView)itemView.findViewById(R.id.grid_item_text);
+		text.setText("MYBUTTON");
+		ImageView icon = (ImageView)itemView.findViewById(R.id.grid_item_icon);
+		icon.setImageResource(R.drawable.focused_application_background_static);
 		
 		return itemView;
 	}
 	
 	public Boolean addItem(String name, String path, int icon, String mime) {
-		long rowId = dbAdapter.createFile(name, path, icon, mime);
+	/*	long rowId = dbAdapter.createFile(name, path, icon, mime);
 		if (rowId > 0) {
 			files.add(new FileItem(rowId, name, icon, path, null));
 			notifyDataSetChanged();
@@ -88,7 +87,8 @@ public class FilesAdapter extends BaseAdapter {
 			//Toast.makeText(mCtx, "Failed to add " + name, Toast.LENGTH_SHORT).show();
 			Log.e(TAG, "Failed to add " + name);
 			return false;
-		}
+		}*/
+		return false;
 	}
 	
 	public Boolean removeItem(int position) {

@@ -1,0 +1,13 @@
+
+    <com.wizarm.android.home.MyTabsListener
+        xmlns:home="http://schemas.android.com/apk/res/com.wizarm.android.home"
+        android:id="@+id/fragment_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="@drawable/application_backgroundfull"
+        android:visibility="invisible" >
+    </com.wizarm.android.home.MyTabsListener>
+
+

@@ -41,7 +41,7 @@ private static final String LOG_TAG = "WizarmTV";
 
     //getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
       //                   WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-    filesAdapter = new FilesAdapter(this);
+   filesAdapter = new FilesAdapter(this);
     
     setContentView(R.layout.overlaysetting);
 

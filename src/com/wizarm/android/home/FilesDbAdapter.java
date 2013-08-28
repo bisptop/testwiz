@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -26,9 +28,9 @@ public class FilesDbAdapter {
 	
     public static final String KEY_ICON = "icon";
 
-    public static final String KEY_PATH = "path";
+    public static final String KEY_PACKAGE = "pack";
     public static final String KEY_ROWID = "_id";
-    public static final String KEY_MIME = "mime";
+
     public static final String KEY_TITLE = "title";
     
     
@@ -45,8 +47,9 @@ public class FilesDbAdapter {
 
     
     
-    final File favFile;
-    FileReader favReader;
+    final File favFile=null;
+    FileReader favReader=null;
+
     
 
     private static final String TAG = "FilesDbAdapter";
@@ -62,8 +65,20 @@ public class FilesDbAdapter {
     public FilesDbAdapter(Context ctx) {
         this.mCtx = ctx;
         
-       
     }
+    
+    
+	public List<FileItem> files;
+	
+	
+   public void Setfiles(List<FileItem> files2) {
+	   	int i;
+		   files=files2;
+		   // create 5 object temp we will need to initialise it later
+		//   for (i=0;i<5;i++)
+		//    files.add(new FileItem(i, "",0,"",null));
+		   return;
+	}
 
     /**
      * Open the files database. If it cannot be opened, try to create a new
@@ -80,17 +95,8 @@ public class FilesDbAdapter {
          final File favFile= new File(DEFAULT_FAVORITES_PATH);
          	        
         	if(favFile.exists()!= true){
-        			try{
-        				favFile.createNewFile();
-        				
-        				// write default value in first time in this elements
-        			}
-        			catch (IOException e)
-        			{
-        	              	  Log.e(TAG, "Couldn't create wizarm setting file " + favFile);
-        	     
-        	              //	 return 0;
-        			}
+        		
+        		createFile();
         		
         		 }
         		else{	
@@ -100,9 +106,7 @@ public class FilesDbAdapter {
         	                Log.e(TAG, "Couldn't find or open favorites file " + favFile);
         	                //return;
         	            }
-        		}
-        		
-        				
+        		}		
         		
         return this;
     }
@@ -122,12 +126,20 @@ public class FilesDbAdapter {
      * @param body the body of the note
      * @return rowId or -1 if failed
      */
-    public long createFile(String title, String path, int icon, String mime) {
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_TITLE, title);
-        initialValues.put(KEY_PATH, path);
-        initialValues.put(KEY_ICON, icon);
-        initialValues.put(KEY_MIME, mime);
+    public long createFile() {
+
+		try{
+			favFile.createNewFile();
+			if(favFile.exists()!= true)
+			writeDefaultXML(5,"Buttons","NULL", R.drawable.focused_application_background_static,-1);
+			// write default value in first time in this elements
+		}
+		catch (IOException e)
+		{
+              	  Log.e(TAG, "Couldn't create wizarm setting file " + favFile);
+     
+              //	 return 0;
+		}
 
         return 0;
        // return mDb.insert(DATABASE_TABLE, null, initialValues);
@@ -153,8 +165,8 @@ public class FilesDbAdapter {
      */
     public Cursor fetchAllFiles() {
 
-        return mDb.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_TITLE,
-                KEY_PATH, KEY_ICON, KEY_MIME}, null, null, null, null, null);
+    	ReadXML(true);
+        return null;
     }
 
     /**
@@ -164,17 +176,12 @@ public class FilesDbAdapter {
      * @return Cursor positioned to matching file, if found
      * @throws SQLException if file could not be found/retrieved
      */
-    public Cursor fetchFile(long rowId) 
+    public Cursor fetchFile(long rowId) {
 
-        Cursor mCursor =
-
-            mDb.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                    KEY_TITLE, KEY_PATH, KEY_ICON, KEY_MIME}, KEY_ROWID + "=" + rowId, null,
-                    null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
+    	ReadXML(true);
+  
+        Cursor mCursor=null;
+		return mCursor;
 
     }
 
@@ -188,33 +195,28 @@ public class FilesDbAdapter {
      * @param path value to set file body to
      * @return true if the file was successfully updated, false otherwise
      */
-    public boolean updateFile(long rowId, String title, String path, int icon, String mime) {
-        ContentValues args = new ContentValues();
-        args.put(KEY_TITLE, title);
-        args.put(KEY_PATH, path);
-        args.put(KEY_ICON, icon);
-        args.put(KEY_MIME, mime);
+    public boolean updateFile(int ID,String title, String pack,String icon,int funccase) {
 
-        return mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    	writeXML(ID,title,pack,icon,funccase);
+    	
+    	return true;
     }
   
     private void ReadXML(boolean isLaunching) {
-
+    		int position=0;
+    		String icon;
+			String pack;
+			String funccase;
+			String title;
+			
             try {
                 favReader = new FileReader(favFile);
             } catch (FileNotFoundException e) {
                 Log.e(TAG, "Couldn't find or open favorites file " + favFile);
                 return;
             }
-
-          Log.e(TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  Log.e(TAG, "writeFavorites(int nthbutton) _______________________________________00000 ");
-      	  
             
-            
+	//		files.set(position, null).setValues(result, i, result, result);
             try {
             int i=0;
 
@@ -243,9 +245,10 @@ public class FilesDbAdapter {
                   	  if(parser.next()==XmlPullParser.TEXT)
                    		 {
 							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(TAG, "__FDK__ XML"+result);
+                			
+                    			icon=parser.getText();
+
+                    			Log.w(TAG, "__FDK__ XML"+icon);
                     	
                    		 }
 
@@ -258,9 +261,9 @@ public class FilesDbAdapter {
                   	  if(parser.next()==XmlPullParser.TEXT)
                    		 {
 							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(TAG, "__FDK__ XML"+result);
+
+                    			pack=parser.getText();
+                    			Log.w(TAG, "__FDK__ XML"+pack);
                     	
                    		 }
 
@@ -273,9 +276,9 @@ public class FilesDbAdapter {
                   	  if(parser.next()==XmlPullParser.TEXT)
                    		 {
 							
-                			String result;
-                    			result=parser.getText();
-                    			Log.w(TAG, "__FDK__ XML"+result);
+                			
+                			funccase=parser.getText();
+                    			Log.w(TAG, "__FDK__ XML"+funccase);
                     	
                    		 }
 
@@ -287,9 +290,9 @@ public class FilesDbAdapter {
               	  if(parser.next()==XmlPullParser.TEXT)
                		 {
 						
-            			String result;
-                			result=parser.getText();
-                			Log.w(TAG, "__FDK__ XML"+result);
+            			
+                			title=parser.getText();
+                			Log.w(TAG, "__FDK__ XML"+title);
                 	
                		 }
 
@@ -341,12 +344,10 @@ public class FilesDbAdapter {
 	Write into XML file to replace funcionality , functionality for 5, buttons
      * 
      */
-    private void writeXML(int nthbutton)//final ApplicationInfo info) 
+    private void writeXML(int ID,String title, String pack,String icon,int funccase)//final ApplicationInfo info) 
     {
     
-
-
-
+     int i;
 	 FileOutputStream favWriter;
 	 XMLformat data = null;
 	 String s;
@@ -360,13 +361,14 @@ public class FilesDbAdapter {
 			serializer.startDocument(null, Boolean.valueOf(true));
 			//serializer.setFeature("https://xmlpull.org/v1/foc/featu, arg1)
 			serializer.startTag(null,TAG_FAVORITES);
-			SerializeXMl(serializer,1,"f.d.draw","thepackage.wizarm","50","Button1");
-			SerializeXMl(serializer,2,"f.d.draw1","thepackage.wizarm","70","Button2");
-			SerializeXMl(serializer,3,"f.d.draw2","the","00000","Button3");
-			SerializeXMl(serializer,4,"f.d.draw2","the","00000","Button4");
-			SerializeXMl(serializer,5,"f.d.draw2","the","00000","Button5");
-	//		serializer.text(CreateString(1,"hi", "me","fine"));
-		//	serializer.text(CreateString(2,"hi", "meee","fine"));
+			
+			for(i=0;i<5;i++){
+			if((ID+1)==i)
+				SerializeXMl(serializer,i,icon,pack,String.valueOf(funccase),title);
+			else
+				SerializeXMl(serializer,i,String.valueOf(files.get(i).ICON),files.get(i).PACKAGE,String.valueOf(files.get(i).FUNCCASE),files.get(i).NAME);
+			}
+
 			serializer.endTag(null,TAG_FAVORITES);
 			serializer.endDocument();
 			serializer.flush();
@@ -424,4 +426,50 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	return;
 		
 }
+
+
+/**
+Write into XML file DEfault 5 buttons with no functionality
+ * 
+ */
+private void writeDefaultXML(int ID,String title, String pack, int icon,int funccase)//final ApplicationInfo info) 
+{
+
+
+
+ int i;
+ FileOutputStream favWriter;
+ XMLformat data = null;
+ String s;
+
+ 
+ XmlSerializer serializer=Xml.newSerializer();
+ 
+	 try {
+		favWriter=new FileOutputStream(favFile);
+		serializer.setOutput(favWriter,"UTF-8");
+		serializer.startDocument(null, Boolean.valueOf(true));
+		serializer.startTag(null,TAG_FAVORITES);
+		for(i=0;i<ID;i++){
+		SerializeXMl(serializer,i,String.valueOf(icon),pack,String.valueOf(funccase),title);
+		}
+		serializer.endTag(null,TAG_FAVORITES);
+		serializer.endDocument();
+		serializer.flush();
+		favWriter.close();
+		
+	} catch (IllegalArgumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IllegalStateException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	 
+}
+
+
 }
