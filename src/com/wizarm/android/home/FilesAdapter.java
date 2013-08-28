@@ -31,17 +31,16 @@ public class FilesAdapter extends BaseAdapter {
 		files = new ArrayList<FileItem>();
 		// Connect to db
 		dbAdapter = new FilesDbAdapter(ctx);
-	dbAdapter.Setfiles(files);
-	//	dbAdapter.open();
+		dbAdapter.Setfiles(files);
+		dbAdapter.open();
+		dbAdapter.fetchFile(5);
 
-
-		
 		li =  (LayoutInflater)mCtx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public int getCount() {
-		return 5;//files.size();
+		return files.size();
 	}
 
 	@Override
@@ -62,17 +61,17 @@ public class FilesAdapter extends BaseAdapter {
 			itemView = li.inflate(R.layout.grid_item, parent, false);
 		}
 
-/*		
+		
 		TextView text = (TextView)itemView.findViewById(R.id.grid_item_text);
 		text.setText(files.get(position).NAME);
 		ImageView icon = (ImageView)itemView.findViewById(R.id.grid_item_icon);
-		icon.setImageResource(files.get(position).ICON);*/
+		icon.setImageResource(files.get(position).ICON);
 		
 
-		TextView text = (TextView)itemView.findViewById(R.id.grid_item_text);
-		text.setText("MYBUTTON");
-		ImageView icon = (ImageView)itemView.findViewById(R.id.grid_item_icon);
-		icon.setImageResource(R.drawable.focused_application_background_static);
+	//	TextView text = (TextView)itemView.findViewById(R.id.grid_item_text);
+	//	text.setText("MYBUTTON");
+	//	ImageView icon = (ImageView)itemView.findViewById(R.id.grid_item_icon);
+	//	icon.setImageResource(R.drawable.focused_application_background_static);
 		
 		return itemView;
 	}

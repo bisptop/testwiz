@@ -47,7 +47,7 @@ public class FilesDbAdapter {
 
     
     
-    final File favFile=null;
+    File favFile=null;
     FileReader favReader=null;
 
     
@@ -75,8 +75,8 @@ public class FilesDbAdapter {
 	   	int i;
 		   files=files2;
 		   // create 5 object temp we will need to initialise it later
-		//   for (i=0;i<5;i++)
-		//    files.add(new FileItem(i, "",0,"",null));
+		   for (i=0;i<5;i++)
+		   files.add(new FileItem(i,"",0,"","0"));
 		   return;
 	}
 
@@ -92,7 +92,7 @@ public class FilesDbAdapter {
     public FilesDbAdapter open() {
     	
         // Environment.getRootDirectory() is a fancy way of saying ANDROID_ROOT or "/system".
-         final File favFile= new File(DEFAULT_FAVORITES_PATH);
+         favFile= new File(DEFAULT_FAVORITES_PATH);
          	        
         	if(favFile.exists()!= true){
         		
@@ -130,8 +130,8 @@ public class FilesDbAdapter {
 
 		try{
 			favFile.createNewFile();
-			if(favFile.exists()!= true)
-			writeDefaultXML(5,"Buttons","NULL", R.drawable.focused_application_background_static,-1);
+			if(favFile.exists()== true)
+			writeDefaultXML(5,"Buttons","NULL", R.drawable.focused_application_background_static,0);
 			// write default value in first time in this elements
 		}
 		catch (IOException e)
@@ -244,9 +244,12 @@ public class FilesDbAdapter {
                     
                   	  if(parser.next()==XmlPullParser.TEXT)
                    		 {
+                  		
 							
-                			
                     			icon=parser.getText();
+                    			files.get(position).ICON=Integer.parseInt(icon);
+                    			
+                    			position++;
 
                     			Log.w(TAG, "__FDK__ XML"+icon);
                     	
