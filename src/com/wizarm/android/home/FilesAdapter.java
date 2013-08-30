@@ -42,6 +42,12 @@ public class FilesAdapter extends BaseAdapter {
 	public int getCount() {
 		return files.size();
 	}
+	
+	public List<FileItem> getfileItem()
+	{
+		return files;
+		
+	}
 
 	@Override
 	public Object getItem(int position) {

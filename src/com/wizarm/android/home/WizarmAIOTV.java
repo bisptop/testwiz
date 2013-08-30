@@ -165,6 +165,7 @@ public class WizarmAIOTV extends Activity {
 
         setContentView(R.layout.home);
         main=(LinearLayout) findViewById(R.id.wizhome);
+        
 
         thiscontext=this;
         

@@ -24,12 +24,14 @@
 	
  
 <Button
-	android:id="@+id/settingbutton"
+		android:id="@+id/settingbutton"
         android:layout_width="214dp"
-        android:layout_height="214dp"
+        android:layout_height="170dp"
         android:gravity="bottom"
+        android:scaleType="centerInside"
         android:text="Button Config"
-        android:drawableLeft="@drawable/ic_action_add"
+        android:background="@null"
+        android:drawableTop="@drawable/iconsettingover"
         />
 
 
@@ -69,10 +71,7 @@
         android:layout_gravity="fill_vertical|center_vertical|center_horizontal"
         android:text="Done" />
     </LinearLayout>
-
-
-
-    
+  
 </LinearLayout>
 
 
