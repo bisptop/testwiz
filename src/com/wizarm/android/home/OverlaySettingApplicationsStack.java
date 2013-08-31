@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -39,7 +40,8 @@ import android.widget.Toast;
 public class OverlaySettingApplicationsStack extends Activity implements OnItemClickListener,
 OnItemLongClickListener
 {
-	
+	ContextThemeWrapper ctw;
+	AlertDialog.Builder builder;
 	
 private FilesAdapter filesAdapter;	
 
@@ -48,6 +50,11 @@ private static final String LOG_TAG = "WizarmTV";
  @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
+    
+    ctw = new ContextThemeWrapper( this,R.style.AlertDialogCustom);
+    
+    builder= new AlertDialog.Builder(this,
+            R.style.AlertDialogCustom);
 
     //getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
       //                   WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
@@ -63,6 +70,13 @@ private static final String LOG_TAG = "WizarmTV";
     
   }
 
+ 
+ ContextThemeWrapper getctw()
+ {
+	 return ctw;
+ }
+ 
+ 
 @Override
 public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position,
 		long arg3) {
@@ -127,6 +141,8 @@ public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
     
     int mStackLevel;
 	DialogFragment newFragment = CreateFileDialogFragment.newInstance("Hi title","1.txt","/home/","mpeg");
+	((CreateFileDialogFragment) newFragment).setctw(ctw);
+	((CreateFileDialogFragment) newFragment).setbuilder(builder);
 	newFragment.show(ft,"dialog");
 
 	

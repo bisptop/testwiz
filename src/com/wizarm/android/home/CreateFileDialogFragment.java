@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 public class CreateFileDialogFragment extends DialogFragment implements DialogInterface.OnClickListener {
 	private static final String TAG = "CreateFileDialogFragment";
+	ContextThemeWrapper ctw;
+	AlertDialog.Builder builder;
 
 	public static CreateFileDialogFragment newInstance(String dialogTitle, String fileName, 
 			String path, String mime) {
@@ -43,34 +45,65 @@ public class CreateFileDialogFragment extends DialogFragment implements DialogIn
 	
 	@Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
 		int theme,style = DialogFragment.STYLE_NORMAL;
         theme = R.style.CustomTheme;
         setStyle(style, theme); 
+
+		
+	//	CustomBuilder builder = new CustomBuilder( ctw );
+		getActivity().getClass();
+        
+   //     ContextThemeWrapper ctw = new ContextThemeWrapper( this, R.style.CustomTheme );
+		
         String title = getArguments().getString("title");
         View view = createView(getActivity().getLayoutInflater(), (ViewGroup) getView());
+     //   view.setTheme(R.style.CustomTheme);
+       
 
-        //AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.CustomTheme));
-        this.setTheme(theme);
-        return new AlertDialog.Builder(getActivity())
+        
+    //  = new AlertDialog.Builder(ctw);
+      // this.setTheme(theme);
+        return builder
                 .setTitle(title)
                 .setView(view)
                 .setPositiveButton("Add", this)
                 .setNegativeButton("Cancel", this)
                 .create();
     }
+	
+	 @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+
+	    	int theme,style = DialogFragment.STYLE_NORMAL;
+	        theme = R.style.CustomTheme;
+	        setStyle(style, theme); 
+			
+	        
+	 }
+	 
+	 public void setctw(ContextThemeWrapper setctw)
+	 { 
+		 ctw=setctw; 
+	 }
+
+	 public void setbuilder(AlertDialog.Builder setbuilder)
+	 { 
+		 builder=setbuilder; 
+	 }
     
-    private void setTheme(int customtheme) {
-		// TODO Auto-generated method stub
-		
-	}
+ 
 
 	public View createView(LayoutInflater inflater, ViewGroup container) {
+		
+
+        
     	String name = getArguments().getString("name");
     	String path = getArguments().getString("path");
     	String mime = getArguments().getString("mime");
 		View layout = inflater.inflate(R.layout.create_link_dialog, container, true);
-		
+
+
 		final EditText nameText = (EditText) layout.findViewById(R.id.name);
 		nameText.setText(name);
 		

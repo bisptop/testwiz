@@ -49,6 +49,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.util.Xml;
 import android.view.ActionMode;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -150,6 +151,7 @@ public class WizarmAIOTV extends Activity {
 
 
 
+
     private Animation mGridEntry;
     private Animation mGridExit;
 	
@@ -167,6 +169,9 @@ public class WizarmAIOTV extends Activity {
         main=(LinearLayout) findViewById(R.id.wizhome);
         
 
+
+		
+		
         thiscontext=this;
         
         setDefaultWallpaper();
