@@ -13,18 +13,32 @@
     <item name="android:windowNoTitle">true</item>
     <item name="android:backgroundDimEnabled">false</item>     
     <item name="android:buttonStyle">@style/MyCustomButton</item>
-
   </style>
+ 
+ 
+   <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+	<item name="android:windowNoTitle">true</item>
+	<item name="android:windowBackground">@drawable/my_gradient</item>
+	<item name="android:backgroundDimEnabled">false</item>
+    <item name="android:windowContentOverlay">@null</item>
+	<item name="android:buttonStyle">@style/MyCustomButton</item>
+    </style>
   
-    <style name="CustomTheme">        
-    <item name="android:windowNoTitle">true</item>
+   <style name="CustomTheme" parent="@android:style/Theme.Dialog" >        
     <item name="android:windowBackground">@drawable/my_gradient</item>
     <item name="android:colorBackgroundCacheHint">#00000000</item>
-
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:buttonStyle">@style/MyCustomButton</item>
+    <item name="android:windowTitleSize">100px</item>
+    <item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item> 
   </style>
   
   <style name="MyCustomButton" parent="android:Widget.Button">
            <item name="android:background">@drawable/my_nine_patch</item>
+  </style>
+   
+  <style name="WindowTitleBackground">     
+        <item name="android:background">@color/titlebackgroundcolor</item>                   
   </style>
   
   

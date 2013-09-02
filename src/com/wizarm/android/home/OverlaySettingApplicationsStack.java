@@ -140,11 +140,12 @@ public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
     ft.addToBackStack(null);
     
     int mStackLevel;
-	DialogFragment newFragment = CreateFileDialogFragment.newInstance("Hi title","1.txt","/home/","mpeg");
-	((CreateFileDialogFragment) newFragment).setctw(ctw);
-	((CreateFileDialogFragment) newFragment).setbuilder(builder);
-	newFragment.show(ft,"dialog");
-
+//	DialogFragment newFragment = CreateFileDialogFragment.newInstance("Hi title","1.txt","/home/","mpeg");
+//	((CreateFileDialogFragment) newFragment).setctw(ctw);
+//	((CreateFileDialogFragment) newFragment).setbuilder(builder);
+//	newFragment.show(ft,"dialog");
+    Intent intent =new Intent(this, CreateFileDialogFragment.class);
+    startActivity(intent);
 	
 }
 
