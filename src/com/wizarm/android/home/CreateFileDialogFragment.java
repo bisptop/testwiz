@@ -9,10 +9,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,8 +28,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +43,7 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 	private static final String TAG = "CreateFileDialogFragment";
 	ContextThemeWrapper ctw;
 	AlertDialog.Builder builder;
+	private Gallery gallery;
 	private static ArrayList<ApplicationInfo> mApplications;
 
 
@@ -61,8 +66,12 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 
 
 	        String name="Fahad";
-	        String mime="Helloe";
+	        String mime="Icon";
 	        String path="/helloe/";
+	        
+	        
+	        gallery = (Gallery) findViewById(R.id.gallery);
+	         gallery.setAdapter(new AddImgAdp(this));
 	        
 
 			final EditText nameText = (EditText) findViewById(R.id.name);
@@ -82,7 +91,6 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 			mimeText.setText("Type: "+mime);
 			
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-				((CheckBox) findViewById(R.id.addShortcut)).setTextColor(Color.WHITE);
 				uriText.setTextColor(Color.WHITE);
 				mimeText.setTextColor(Color.WHITE);
 			}
@@ -219,10 +227,50 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
                    mApplications.add(application);
                }
            }
-
-
     	
     }
+    
+    
+    public class AddImgAdp extends BaseAdapter {
+        int GalItemBg;
+        private Context cont;
+        private Integer[] Imgid = {
+                R.drawable.iconradio, R.drawable.iconmail, R.drawable.iconcloud, R.drawable.iconfirefox, R.drawable.iconchatover, R.drawable.iconchat, R.drawable.iconplay
+        };
+
+
+        public AddImgAdp(Context c) {
+            cont = c;
+          //  TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
+         //   GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
+          //  typArray.recycle();
+        }
+
+        public int getCount() {
+            return Imgid.length;
+        }
+
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ImageView imgView = new ImageView(cont);
+
+            imgView.setImageResource(Imgid[position]);
+            imgView.setLayoutParams(new Gallery.LayoutParams(50, 50));
+            imgView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imgView.setBackgroundResource(GalItemBg);
+
+            return imgView;
+        }
+    }
+
+    
 	
 }
 	
