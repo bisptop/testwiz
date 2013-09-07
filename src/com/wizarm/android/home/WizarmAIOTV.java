@@ -995,7 +995,7 @@ public class WizarmAIOTV extends Activity {
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent result) {
-      if (requestCode==1111 && resultCode==RESULT_OK) {
+      if (requestCode==1111 /*&& resultCode==RESULT_OK*/) {
   //      mixer.setColor(result.getIntExtra(ColorMixerActivity.COLOR,
    //                                       mixer.getColor()));
     	  showApplications(true);

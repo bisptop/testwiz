@@ -249,7 +249,7 @@ public class FilesDbAdapter {
                     			icon=parser.getText();
                     			files.get(position).ICON=Integer.parseInt(icon);
                     			
-                    			position++;
+                    			
 
                     			Log.w(TAG, "__FDK__ XML"+icon);
                     	
@@ -266,6 +266,7 @@ public class FilesDbAdapter {
 							
 
                     			pack=parser.getText();
+                    			files.get(position).PACKAGE=pack;
                     			Log.w(TAG, "__FDK__ XML"+pack);
                     	
                    		 }
@@ -279,8 +280,9 @@ public class FilesDbAdapter {
                   	  if(parser.next()==XmlPullParser.TEXT)
                    		 {
 							
-                			
+                  		
                 			funccase=parser.getText();
+                			files.get(position).FUNCCASE=Integer.parseInt(funccase);
                     			Log.w(TAG, "__FDK__ XML"+funccase);
                     	
                    		 }
@@ -295,7 +297,9 @@ public class FilesDbAdapter {
 						
             			
                 			title=parser.getText();
+                			files.get(position).NAME=title;
                 			Log.w(TAG, "__FDK__ XML"+title);
+                			position++;
                 	
                		 }
 
@@ -421,7 +425,7 @@ void SerializeXMl(XmlSerializer serializer,int id,String icon,String thepackage,
 	serializer.endTag(null,TAG_FUNC);
 	
 	serializer.startTag(null,TAG_TITLE);
-	serializer.text(func);
+	serializer.text(Title);
 	serializer.endTag(null,TAG_TITLE);
 	
 	serializer.endTag(null,TAG_FAVORITE);
