@@ -27,4 +27,10 @@
         <attr name="marginRight" format="dimension"  />
         <attr name="marginBottom" format="dimension"  />
     </declare-styleable>
+
+
+   <declare-styleable name="GalleryTheme">
+        <attr name="android:galleryItemBackground" />
+    </declare-styleable>
+
 </resources>

@@ -34,22 +34,20 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
-
-
-
 public class OverlaySettingApplicationsStack extends Activity implements OnItemClickListener,
 OnItemLongClickListener
 {
 	ContextThemeWrapper ctw;
 	AlertDialog.Builder builder;
 	
-private FilesAdapter filesAdapter;	
+public FilesAdapter filesAdapter;	
 
 private static final String LOG_TAG = "WizarmTV";
 
  @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
+    
     
     ctw = new ContextThemeWrapper( this,R.style.AlertDialogCustom);
     
@@ -145,7 +143,19 @@ public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
 //	((CreateFileDialogFragment) newFragment).setbuilder(builder);
 //	newFragment.show(ft,"dialog");
     Intent intent =new Intent(this, CreateFileDialogFragment.class);
+    intent.putExtra("Bposition", position);
+    
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+    Log.e(LOG_TAG, "HI This is the postion send file" + position);
+ //   intent.putExtra("Myclass", filesAdapter);
     startActivity(intent);
+
+   // ((CreateFileDialogFragment)).
 	
 }
 

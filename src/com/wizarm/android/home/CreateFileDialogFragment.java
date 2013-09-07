@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -26,8 +27,11 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,17 +43,39 @@ import android.widget.Toast;
 
 
 
-public class CreateFileDialogFragment extends Activity implements DialogInterface.OnClickListener {
+public class CreateFileDialogFragment extends Activity implements  OnClickListener,OnItemClickListener {
 	private static final String TAG = "CreateFileDialogFragment";
 	ContextThemeWrapper ctw;
+	OverlaySettingApplicationsStack Obj;
 	AlertDialog.Builder builder;
-	private Gallery gallery;
+	private Gallery gallery,pgallery;
+	ImageView image;
 	private static ArrayList<ApplicationInfo> mApplications;
+	TextView mimeText;
+	int position;
+	
+	private FilesAdapter filesAdapter;
+	private ImageView imgView=null;
+	 private static final String LOG_TAG = "WizarmTV";
 
 
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+	        
+	        Bundle bundle=getIntent().getExtras();
+	        position=(int)bundle.getInt("Bposition", 0);
+	        		//("Bposition");
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        Log.e(LOG_TAG, "HI This is the postion file" + position);
+	        	             
+	        filesAdapter = new FilesAdapter(this);
+	        
 	        
 			setTheme(R.style.CustomTheme);
 			
@@ -58,52 +84,102 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 		   //    setTitleColor(#1a557c);
 		       
 	        setContentView(R.layout.create_link_dialog);
+	        
+	        loadApplications(true);
 
 	        
 	        // Title bar
 	          getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
 	                  R.layout.custom_title);
 
-
-	        String name="Fahad";
-	        String mime="Icon";
-	        String path="/helloe/";
+	       List<FileItem> files;
+	       files=filesAdapter.getfileItem();
+	          
+	        String name=files.get(position).NAME;
+	        String mime=files.get(position).PACKAGE;
+	        String path="helloe";
 	        
+	        Log.e(LOG_TAG, "HI This is the postion NAME file" + files.get(1).NAME);
+	        Log.e(LOG_TAG, "HI This is the postion PACKAGE file" +files.get(1).PACKAGE);
+	        
+	        Log.e(LOG_TAG, "HI This is the postion NAME file" + files.get(2).NAME);
+	        Log.e(LOG_TAG, "HI This is the postion PACKAGE file" +files.get(2).PACKAGE);
 	        
 	        gallery = (Gallery) findViewById(R.id.gallery);
-	         gallery.setAdapter(new AddImgAdp(this));
+	        gallery.setAdapter(new AddImgAdp(this));
+	        
+	        pgallery = (Gallery) findViewById(R.id.pgallery);
+	        pgallery.setAdapter(new AddPackAdp(this));
 	        
 
 			final EditText nameText = (EditText) findViewById(R.id.name);
 			nameText.setText(name);
+					//	getArguments().putInt("icon", icon);
+			final TextView uriText = (TextView) findViewById(R.id.uri);
+			uriText.setText(name);
 			
 			//change icon based on mime type
 			int icon = getIconForType(mime);
 			
-			ImageView image = (ImageView) findViewById(R.id.icon);
+			image = (ImageView) findViewById(R.id.icon);
 			image.setImageResource(icon);
+
 			Log.d(TAG, "iconid"+icon);
 			Log.d(TAG,image.getWidth()+" w -- h "+image.getHeight());
-		//	getArguments().putInt("icon", icon);
-			TextView uriText = (TextView) findViewById(R.id.uri);
-			uriText.setText(path);
-			TextView mimeText = (TextView) findViewById(R.id.mime);
-			mimeText.setText("Type: "+mime);
+			
+
+			mimeText = (TextView) findViewById(R.id.mime);
+			mimeText.setText(mime);
 			
 			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 				uriText.setTextColor(Color.WHITE);
 				mimeText.setTextColor(Color.WHITE);
 			}
 			
-			((ImageButton) findViewById(R.id.clear)).setOnClickListener(new View.OnClickListener() {
+			
+			 findViewById(R.id.ImageView01).setOnClickListener(this);
+			 findViewById(R.id.buttonCancel).setOnClickListener(this); 
+			
+			
+			((ImageButton) findViewById(R.id.clear)).setOnClickListener(this);// {
 				
-				@Override
-				public void onClick(View v) {
-					nameText.setText("");
-					setTheme(R.style.Theme);
-				}
+		//		@Override
+			//	public void onClick(View v) {
+			//		finish();
+		//		}
 
-			});
+			//});
+			
+			gallery.setOnItemClickListener(this);
+			pgallery.setOnItemClickListener(this);
+
+				
+				
+		//	});
+			
+	    /*     gallery.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+	             public void onItemClick(AdapterView parent, View v, int position, long id) {
+	            //    imgView.setImageResource(Imgid[position]);
+						int GalItemBg;
+						
+				//		switch(id.getItemId()){
+				//		case 1:
+					 	  TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
+					 	  GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
+					 	  image.setImageResource(Imgid[position]);
+				//		}
+	         //		v.setScaleType(ImageView.ScaleType.FIT_XY);
+	         	//	v.setBackgroundResource(GalItemBg);
+	         	//	image.setBackgroundResource(GalItemBg);
+	         //		Drawable drawable = getResources().getDrawable(R.drawable.pressed_application_background_static);
+	         	//	image.setBackgroundDrawable(drawable);
+	        
+	             }
+
+	         });*/
+
+			
 			
 			nameText.addTextChangedListener(new TextWatcher() {
 				
@@ -112,6 +188,7 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 					if (s.toString().equals("")) {
 					//	((AlertDialog)getDialog()).getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
 					} else {
+						uriText.setText(s);
 						//((AlertDialog)getDialog()).getButton(Dialog.BUTTON_POSITIVE).setEnabled(true);
 					}
 					
@@ -134,7 +211,20 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 	        
 	 }
 	
+	 @Override
+		public void onClick(View v) {
+			 switch (v.getId()) {
+			 case R.id.buttonCancel:
+			 case R.id.ImageView01:
+					finish();
+			 case R.id.clear:
+					final EditText nameText = (EditText) findViewById(R.id.name);
+					nameText.setText("");
+				 break;
+			 
+			 }
 
+		}
 
 	 
 	 public void setctw(ContextThemeWrapper setctw)
@@ -185,13 +275,64 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
 		}
 		*/
 	}
-	
+
 	
 
-	@Override
-	public void onClick(DialogInterface dialog, int which) {
-	}
+
 	
+
+    
+    
+    
+    public Integer[] Imgid = {
+            R.drawable.iconradio, R.drawable.iconmail, R.drawable.iconcloud, R.drawable.iconfirefox, R.drawable.iconchatover, R.drawable.iconchat, R.drawable.iconplay
+    };
+    
+    public class AddImgAdp extends BaseAdapter {
+        int GalItemBg;
+        private Context cont;
+
+
+
+        public AddImgAdp(Context c) {
+            cont = c;
+            TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
+            GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
+            typArray.recycle();
+        }
+
+        public int getCount() {
+            return Imgid.length;
+        }
+
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ImageView imgView = new ImageView(cont);
+
+            imgView.setImageResource(Imgid[position]);
+            imgView.setScaleType(ImageView.ScaleType.FIT_XY);
+            
+            imgView.setLayoutParams(new Gallery.LayoutParams(60,60));
+        //    imgView.setBackgroundResource(GalItemBg);
+
+            return imgView;
+        }
+    }
+    
+    
+    
+    
+    
+    //////////////////////////////////////////////////////////
+    
+    
 	
     private void loadApplications(boolean isLaunching) {
     	
@@ -231,15 +372,15 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
     }
     
     
-    public class AddImgAdp extends BaseAdapter {
+    
+    
+    public class AddPackAdp extends BaseAdapter {
         int GalItemBg;
         private Context cont;
-        private Integer[] Imgid = {
-                R.drawable.iconradio, R.drawable.iconmail, R.drawable.iconcloud, R.drawable.iconfirefox, R.drawable.iconchatover, R.drawable.iconchat, R.drawable.iconplay
-        };
 
 
-        public AddImgAdp(Context c) {
+
+        public AddPackAdp(Context c) {
             cont = c;
           //  TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
          //   GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
@@ -247,11 +388,11 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
         }
 
         public int getCount() {
-            return Imgid.length;
+            return mApplications.size();
         }
 
         public Object getItem(int position) {
-            return position;
+            return mApplications.get(position);
         }
 
         public long getItemId(int position) {
@@ -261,7 +402,7 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imgView = new ImageView(cont);
 
-            imgView.setImageResource(Imgid[position]);
+            imgView.setImageDrawable(mApplications.get(position).icon);
             imgView.setLayoutParams(new Gallery.LayoutParams(50, 50));
             imgView.setScaleType(ImageView.ScaleType.FIT_XY);
             imgView.setBackgroundResource(GalItemBg);
@@ -269,6 +410,49 @@ public class CreateFileDialogFragment extends Activity implements DialogInterfac
             return imgView;
         }
     }
+
+
+
+
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		
+		 switch (parent.getId()) {
+
+		 case R.id.gallery:
+		 
+			 int GalItemBg;
+			 TypedArray typArray = obtainStyledAttributes(R.styleable.GalleryTheme);
+		 	 GalItemBg = typArray.getResourceId(R.styleable.GalleryTheme_android_galleryItemBackground, 0);
+		 	 image.setImageResource(Imgid[position]);
+			 break;
+			 
+		 case R.id.pgallery:
+			 
+			 mimeText.setTextColor(Color.YELLOW);
+			 mimeText.setText(mApplications.get(position).title);
+		 
+			 break;
+
+		 
+	     
+		 
+		 }
+		
+	}
+    
+    
+    
+    
+    void setparent(OverlaySettingApplicationsStack abc)
+    {
+    	Obj=abc;
+    }
+    
+
+
 
     
 	

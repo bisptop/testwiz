@@ -131,7 +131,7 @@ public class FilesDbAdapter {
 		try{
 			favFile.createNewFile();
 			if(favFile.exists()== true)
-			writeDefaultXML(5,"Buttons","NULL", R.drawable.focused_application_background_static,0);
+			writeDefaultXML(5,"New Button configure","NULL", R.drawable.focused_application_background_static,0);
 			// write default value in first time in this elements
 		}
 		catch (IOException e)
