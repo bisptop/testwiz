@@ -39,7 +39,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="545dp"
+    android:layout_height="600dp"
     android:orientation="vertical"
     android:weightSum="1" >
 
@@ -75,7 +75,7 @@
 	    android:paddingTop="0dp" >
     
     <Button
-        android:id="@+id/buttonEmpty"
+        android:id="@+id/buttonDone"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
