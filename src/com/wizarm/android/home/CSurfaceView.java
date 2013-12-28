@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class CSurfaceView extends SurfaceView implements Callback{
 
-	private static final String LOG_TAG = "WizarmTV";
+	private static final String LOG_TAG = "cam";
 	private GestureDetector gesture=null;
 	int mCurrentCamera = 0;
 	SurfaceHolder sholder=null;
@@ -46,7 +46,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	public CSurfaceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-        Log.e(LOG_TAG, "Camera init CSurfaceView");
+        Log.e(LOG_TAG, "Camera init CSurfaceView IN");
         // Acquire the next camera and request Preview to reconfigure
             // parameters.
        //     mCurrentCamera = (mCameraCurrentlyLocked + 1) % mNumberOfCameras;
@@ -59,6 +59,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	//surface_holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         setWillNotDraw(false);
     //    getHolder.addCallback(this);
+        Log.e(LOG_TAG, "Camera init CSurfaceView FIN");
    	 }
 
 
@@ -66,22 +67,24 @@ public class CSurfaceView extends SurfaceView implements Callback{
  	public void surfaceCreated(SurfaceHolder holder) {
  		// TODO Auto-generated method stub
 		sholder=holder;
+		Log.e(LOG_TAG, "Camera init surfaceCreated IN");
 
 		/*
-        	 * To reduce startup time, we start the preview in another thread.
+		 * To reduce startup time, we start the preview in another thread.
         	 * We make sure the preview is started at the end of onCreate.
         	 */	
 //		drawNosignal();
 
-		    	CameraSetup();
+		CameraSetup();
 		CameraOpenThread cameraOpenThread = new CameraOpenThread();
 		//	cameraOpenThread.start();
+		Log.e(LOG_TAG, "Camera init surfaceCreated FIN");
  		
  	}
 
 	public int CameraSetup(){
-		
-		Log.e(LOG_TAG, "100000000000000000000000000000000000000000000000000000000 NO of camera=" +checkNumberofCameras());
+		Log.e(LOG_TAG, "CameraSetup IN");
+		Log.e(LOG_TAG, "NO of camera=" +checkNumberofCameras());
 		
 		 if(checkNumberofCameras()==0) {
 				Log.e(LOG_TAG, "111111111111111111111111111111111111111111111111");
@@ -99,7 +102,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
         	       mCamera = null;
         	       drawNosignal();
 		 }
-
+ 	      Log.e(LOG_TAG, "CameraSetup FIN");
  	       return 1; 
 	}
 
@@ -108,44 +111,45 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
+		Log.e(LOG_TAG, "SurfaceChanged camera called IN");
 		// TODO Auto-generated method stub
-		
-        	drawNosignal();
+        drawNosignal();
 		CameraPreviewThread cameraPreviewThread = new CameraPreviewThread();
 		cameraPreviewThread.setdelay(100);
 		cameraPreviewThread.start();
 
-		Log.e(LOG_TAG, "SurfaceChanged camera called");
+		Log.e(LOG_TAG, "SurfaceChanged camera called FIN");
 
 		
 	}
 
-
 	    public void onPause() {
-
         // Because the Camera object is a shared resource, it's very
         // important to release it when the activity is paused.
+	    	Log.e(LOG_TAG, "onPause camera called IN");
    	     if (mCamera != null) {
         	 mCamera.release();
            	 mCamera = null;
        	      }
+   	     Log.e(LOG_TAG, "onPause camera called FIN");
   	  }
 
-
 	    public void onResume() {
-	    	//CameraSetup();
+	    	Log.e(LOG_TAG, "onResume camera called IN");
+	    	CameraSetup();
+	    	Log.e(LOG_TAG, "onResume camera called FIN");
 	    }
-
-
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		// TODO Auto-generated method stub
+		Log.e(LOG_TAG, "surfaceDestroyed camera called IN");
 	 if(mCamera!=null){
        		mCamera.stopPreview();
       		mCamera.release();
         	mCamera = null;
 		}
+	 Log.e(LOG_TAG, "surfaceDestroyed camera called FIN");
 
 	}
 
@@ -161,18 +165,17 @@ public class CSurfaceView extends SurfaceView implements Callback{
         newWidth = Math.round(background.getWidth()/scaleW);
         newHeight = Math.round(background.getHeight()/scaleH);
         scaled = Bitmap.createScaledBitmap(background, newWidth, newHeight, true); 
- 
         Log.e(LOG_TAG, "Camera drawNosignal() Finish");
    	 }
 
 	public void onDraw(Canvas canvas) {
-		
-	       Log.e(LOG_TAG, " __FDK__ ");
-	  // if(Flag==0)
-		canvas.drawBitmap(scaled,0,0,null);
-//	    else
-//	    	canvas.drawColor(0xff000000);
-	    Flag=1;
+	       Log.e(LOG_TAG, " onDraw __FDK__ ");
+	   if(Flag==0)
+		   	canvas.drawBitmap(scaled,0,0,null);
+	    else{
+	    	canvas.drawColor(0xff000000);
+	    }
+	    	Flag=1;
 	    
 	//	Bcanvas=canvas;
 	}
@@ -181,33 +184,19 @@ public class CSurfaceView extends SurfaceView implements Callback{
     public class CameraOpenThread extends Thread {
         @Override
         public void run() {
-
-		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
-		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
-		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
 		Log.e(LOG_TAG, "CAMERA SETUP RUN CALLED _FDK__");
 		CameraSetup();	
-            }
+         }
         }
-
+    
     public class CameraPreviewThread extends Thread {
         @Override
         public void run() {
-    		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
-    		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");
-//Paint paint=new Paint();
-//paint.setStyle(Style.FILL);
-//paint.setColor(0xff000000);
-//Bcanvas.drawRect(0,0,newWidth, newHeight, paint);
-
-    		//Bcanvas.drawColor(0xff000000);
-    		
-    		
+    		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__");   		
 
         	if(mCamera!=null){
         		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
-        		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
-       	    // mCamera.startPreview(); // disabled camera temp for speed
+       	         mCamera.startPreview(); // disabled camera temp for speed
         	}
         	invalidate();
 
@@ -216,61 +205,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 		public void setdelay(int i) {
 			// TODO Auto-generated method stub
 			
-		}
+			}
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*	
-	public boolean onTouchEvent(MotionEvent event) {
-		if (event.getAction()==MotionEvent.ACTION_UP) {
-			gestureListener.onSingleTapUp(event);
-		}
-		
-		return(true);
-	}
-	
-	public void addTapListener(TapListener l) {
-		listeners.add(l);
-	}
-	
-	public void removeTapListener(TapListener l) {
-		listeners.remove(l);
-	}
-	
-	private GestureDetector.SimpleOnGestureListener gestureListener=
-		new GestureDetector.SimpleOnGestureListener() {
-		@Override
-		public boolean onSingleTapUp(MotionEvent e) {
-			for (TapListener l : listeners) {
-				l.onTap(e);
-			}
-			
-			return(true);
-		}
-	};
-	
-	public interface TapListener {
-		void onTap(MotionEvent event);
-	}
-*/
