@@ -119,7 +119,9 @@ public class CreateFileDialogFragment extends Activity implements  OnClickListen
 			uriText.setText(name);
 			
 			//change icon based on mime type
-			int icon = getIconForType(mime);
+		//	int icon = getIconForType(mime);
+			
+			int icon =files.get(position).ICON;
 			
 			image = (ImageView) findViewById(R.id.icon);
 			image.setImageResource(icon);

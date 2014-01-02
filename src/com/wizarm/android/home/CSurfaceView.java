@@ -40,6 +40,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 
 	protected boolean mOpenCameraFail;
    	protected boolean mCameraDisabled;
+   	CameraPreviewThread cameraPreviewThread;
 
 
 	
@@ -114,7 +115,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 		Log.e(LOG_TAG, "SurfaceChanged camera called IN");
 		// TODO Auto-generated method stub
         drawNosignal();
-		CameraPreviewThread cameraPreviewThread = new CameraPreviewThread();
+		cameraPreviewThread = new CameraPreviewThread();
 		cameraPreviewThread.setdelay(100);
 		cameraPreviewThread.start();
 
@@ -174,6 +175,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 		   	canvas.drawBitmap(scaled,0,0,null);
 	    else{
 	    	canvas.drawColor(0xff000000);
+	    	mCamera.startPreview();
 	    }
 	    	Flag=1;
 	    

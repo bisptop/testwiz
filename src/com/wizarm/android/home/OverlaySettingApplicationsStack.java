@@ -64,7 +64,15 @@ private static final String LOG_TAG = "WizarmTV";
       gridview.setAdapter(filesAdapter);
       gridview.setOnItemClickListener(this);
       gridview.setOnItemLongClickListener(this);
-        
+      
+      
+      final Button Done_button = (Button) findViewById(R.id.buttonDone);
+      Done_button.setOnClickListener(new View.OnClickListener() {
+    	    @Override
+    	    public void onClick(View v) {
+    	    	finish();
+    	    }
+      });
     
   }
 
