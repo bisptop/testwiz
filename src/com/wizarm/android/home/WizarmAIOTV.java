@@ -46,6 +46,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -136,7 +137,7 @@ public class WizarmAIOTV extends Activity {
     private CheckBox mShowApplicationsCheck;
 
 
-
+    private boolean setOnclickvisible=false;
 
     private Animation mGridEntry;
     private Animation mGridExit;
@@ -166,7 +167,7 @@ public class WizarmAIOTV extends Activity {
 
         bindApplications();
 
-        bindRecents();
+
         bindButtons();
 
         
@@ -178,7 +179,7 @@ public class WizarmAIOTV extends Activity {
 
 ;
 	// fahad we need the icons at startup
-	showApplications(true);
+		showApplications(true);
  
         //REQUIRES ROOT PERMISSION TO INVESTIGATE fahad 
         String ProcID = "42";
@@ -219,8 +220,7 @@ public class WizarmAIOTV extends Activity {
                         osw.write("/system/bin/service call activity 42 s16 com.android.systemui"); 
                         osw.flush();
                         osw.close();
-                        
-                        
+                                               
                         
                         
                 } catch (IOException e) {
@@ -270,7 +270,7 @@ public class WizarmAIOTV extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        bindRecents();
+
     }
     
     @Override
@@ -298,7 +298,6 @@ public class WizarmAIOTV extends Activity {
         }
         mGrid.setAdapter(new ApplicationsAdapter(this, mApplications));
         mGrid.setSelection(0);
-
 
     }
 
@@ -390,41 +389,7 @@ public class WizarmAIOTV extends Activity {
     };
     
   
-    
-    
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * Refreshes the recently launched applications stacked over the favorites. The number
-     * of recents depends on how many favorites are present.
-     */
-    private void bindRecents() {
-        final PackageManager manager = getPackageManager();
-        final ActivityManager tasksManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        final List<ActivityManager.RecentTaskInfo> recentTasks = tasksManager.getRecentTasks(
-                MAX_RECENT_TASKS, 0);
-
-        final int count = recentTasks.size();
-        final ArrayList<ApplicationInfo> recents = new ArrayList<ApplicationInfo>();
-
-        for (int i = count - 1; i >= 0; i--) {
-            final Intent intent = recentTasks.get(i).baseIntent;
-
-            if (Intent.ACTION_MAIN.equals(intent.getAction()) &&
-                    !intent.hasCategory(Intent.CATEGORY_HOME)) {
-
-                ApplicationInfo info = getApplicationInfo(manager, intent);
-                if (info != null) {
-                    info.intent = intent;
-                    if (!mFavorites.contains(info)) {
-                        recents.add(info);
-                    }
-                }
-            }
-        }
-
-
-    }
+   
 
     private static ApplicationInfo getApplicationInfo(PackageManager manager, Intent intent) {
         final ResolveInfo resolveInfo = manager.resolveActivity(intent, 0);
@@ -730,18 +695,28 @@ public class WizarmAIOTV extends Activity {
 
         if (animate) {
             mGridEntry.setAnimationListener(new ShowGrid());
-	      mGrid.startAnimation(mGridEntry);
+            mGrid.startAnimation(mGridEntry);
         }
 
         mGrid.setVisibility(View.VISIBLE);
         mShowApplications.bringToFront();
         mShowApplications.setVisibility(View.VISIBLE);
+        
+		main.setVisibility(View.VISIBLE);
+		
+		main.bringToFront();
+//		csurface.forceLayout();
+	
+	//	csurface.requestLayout();
+		main.requestLayout();
+	
+	
 
         if (!animate) {
             mBlockAnimation = false;
         }
 
-        // ViewDebug.startHierarchyTracing("Home", mGrid);
+         ViewDebug.startHierarchyTracing("Home", mGrid);
     }
 
 
@@ -765,6 +740,7 @@ public class WizarmAIOTV extends Activity {
         mGrid.startAnimation(mGridExit);
         mGrid.setVisibility(View.INVISIBLE);
         mShowApplications.requestFocus();
+
         // This enables a layout animation; if you uncomment this code, you need to
         // comment the line mGrid.startAnimation() above
 //        mGrid.setLayoutAnimationListener(new HideGrid());
@@ -781,10 +757,10 @@ public class WizarmAIOTV extends Activity {
     }
 
     private void ShowOverlayapp() {
-    	
+    	main.bringToFront();
     	if(main.getVisibility() == View.GONE);{
     		main.setVisibility(View.VISIBLE);
-		main.bringToFront();
+		
 		main.requestLayout();
 //    		showApplications(false);
     	}
@@ -815,7 +791,6 @@ public class WizarmAIOTV extends Activity {
         public void onReceive(Context context, Intent intent) {
             loadApplications(false);
             bindApplications();
-            bindRecents();
         }
     }
 
@@ -899,7 +874,17 @@ public class WizarmAIOTV extends Activity {
      */
     private class ShowApplications implements View.OnClickListener {
         public void onClick(View v) {
-/*            if (mGrid.getVisibility() != View.VISIBLE) {
+        	
+        	
+        	if ((setOnclickvisible==true) && (mGrid.getVisibility() != View.VISIBLE))
+        	{
+        		showApplications(true);
+        		setOnclickvisible=false;
+        	}
+        	
+        	
+        	
+        /*    if (mGrid.getVisibility() != View.VISIBLE) {
                 showApplications(true);
             } else {
 //                hideApplications();
@@ -969,6 +954,7 @@ public class WizarmAIOTV extends Activity {
 	case 1:
      //        hideApplications();
              	HideOverlayapp();
+             	setOnclickvisible=true;
 	//	mShowApplicationsCheck.setVisibility(View.INVISIBLE); this works
 	   break;
 	case 3:
@@ -1000,10 +986,6 @@ public class WizarmAIOTV extends Activity {
         super.onActivityResult(requestCode, resultCode, result);
       }
     }
-
-    
-    
-
 
 
 

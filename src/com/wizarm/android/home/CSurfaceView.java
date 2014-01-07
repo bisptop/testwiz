@@ -74,7 +74,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
 		 * To reduce startup time, we start the preview in another thread.
         	 * We make sure the preview is started at the end of onCreate.
         	 */	
-//		drawNosignal();
+	//drawNosignal();
 
 		CameraSetup();
 		CameraOpenThread cameraOpenThread = new CameraOpenThread();
@@ -113,8 +113,9 @@ public class CSurfaceView extends SurfaceView implements Callback{
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 		Log.e(LOG_TAG, "SurfaceChanged camera called IN");
+		if(mCamera==null) CameraSetup();
 		// TODO Auto-generated method stub
-        drawNosignal();
+     //   drawNosignal();
 		cameraPreviewThread = new CameraPreviewThread();
 		cameraPreviewThread.setdelay(100);
 		cameraPreviewThread.start();
@@ -149,6 +150,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
        		mCamera.stopPreview();
       		mCamera.release();
         	mCamera = null;
+       	 Log.e(LOG_TAG, "surfaceDestroyed mCamera = null;");
 		}
 	 Log.e(LOG_TAG, "surfaceDestroyed camera called FIN");
 
@@ -171,11 +173,15 @@ public class CSurfaceView extends SurfaceView implements Callback{
 
 	public void onDraw(Canvas canvas) {
 	       Log.e(LOG_TAG, " onDraw __FDK__ ");
-	   if(Flag==0)
-		   	canvas.drawBitmap(scaled,0,0,null);
+	   if(Flag==0){
+		   Log.e(LOG_TAG, " onDraw __FDK__ ");
+//   	canvas.drawBitmap(scaled,0,0,null);
+		   }
 	    else{
-	    	canvas.drawColor(0xff000000);
-	    	mCamera.startPreview();
+	   // 	canvas.drawColor(0xff000000);
+
+	    	
+	   // 	mCamera.startPreview();
 	    }
 	    	Flag=1;
 	    
@@ -200,7 +206,7 @@ public class CSurfaceView extends SurfaceView implements Callback{
         		Log.e(LOG_TAG, "CAMERA PreviewThread CALLED _FDK__ 2");
        	         mCamera.startPreview(); // disabled camera temp for speed
         	}
-        	invalidate();
+        //	invalidate();
 
             }
 
