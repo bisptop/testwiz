@@ -14,17 +14,25 @@
      limitations under the License.
 -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/mainLayoutsecond"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
 	android:orientation="horizontal"
-	android:padding="30dp">	
+	android:layout_centerInParent="true">	
 	
-	
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="600dp"
+    android:orientation="horizontal"
+    android:weightSum="1" >
+
  
 <Button
-		android:id="@+id/settingbutton"
+	android:id="@+id/settingbutton"
         android:layout_width="214dp"
         android:layout_height="170dp"
         android:gravity="bottom"
@@ -38,7 +46,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="600dp"
     android:orientation="vertical"
     android:weightSum="1" >
@@ -85,9 +93,13 @@
 
 
     
+    
+    
+    </LinearLayout>
+    </LinearLayout>
   
-</LinearLayout>
 
 
 
-</LinearLayout>
+
+</RelativeLayout>
