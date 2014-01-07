@@ -22,7 +22,7 @@
 		android:versionCode="1"
     	android:versionName="1.0">
 	
-    <uses-sdk android:minSdkVersion="11" />
+    <uses-sdk android:minSdkVersion="12" />
     
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.GET_TASKS"/>
@@ -64,6 +64,14 @@
         <activity android:name="com.wizarm.android.home.OverlaySettingApplicationsStack"
                   android:label="WizarmAIOTV"
                   android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.PICK"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.wizarm.android.home.CreateFileDialogFragment"
+                  android:label="WizarmAIOTV"
+                  android:theme="@style/CustomTheme">
             <intent-filter>
                 <action android:name="android.intent.action.PICK"/>
             </intent-filter>
